@@ -1,12 +1,12 @@
 """
 LLM Processor Module
-Handles Claude AI-based extraction of structured data from OCR text
+Handles Grok AI-based extraction of structured data from OCR text
 """
 
 import json
 import logging
 from typing import Dict, Tuple, Optional
-from anthropic import Anthropic
+from llm_grok import GrokClient
 from config import Config
 
 logger = logging.getLogger(__name__)
@@ -14,14 +14,14 @@ logger = logging.getLogger(__name__)
 
 class LLMProcessor:
     """
-    Processes OCR text using Claude LLM to extract structured bill data
+    Processes OCR text using Grok LLM to extract structured bill data
     Tracks token usage for all API calls
     """
     
     def __init__(self):
-        """Initialize LLM processor with Claude client"""
-        self.client = Anthropic()
-        self.model = Config.CLAUDE_MODEL
+        """Initialize LLM processor with Grok client"""
+        self.client = GrokClient(api_key=Config.GROK_API_KEY)
+        self.model = Config.CLAUDE_MODEL  # you can rename to Config.LLM_MODEL if you want
         
         # Token tracking
         self.total_tokens = 0
@@ -37,7 +37,7 @@ class LLMProcessor:
         page_number: str = "1"
     ) -> Tuple[Dict, int, int]:
         """
-        Extract bill items from OCR text using Claude
+        Extract bill items from OCR text using Grok
         
         Args:
             ocr_text: Text extracted from OCR
@@ -49,25 +49,19 @@ class LLMProcessor:
         try:
             logger.info(f"📋 Extracting bill items from page {page_number}...")
             
-            # Create extraction prompt with guard rails
             prompt = self._create_extraction_prompt(ocr_text, page_number)
             
-            # Call Claude API
-            logger.debug("📤 Sending request to Claude API...")
-            message = self.client.messages.create(
+            # Call Grok API
+            logger.debug("📤 Sending request to Grok API...")
+            message = self.client.complete(
                 model=self.model,
-                max_tokens=Config.MAX_TOKENS,
-                messages=[
-                    {
-                        "role": "user",
-                        "content": prompt
-                    }
-                ]
+                prompt=prompt,
+                max_tokens=Config.MAX_TOKENS
             )
             
-            # Track tokens
-            input_tok = message.usage.input_tokens
-            output_tok = message.usage.output_tokens
+            # Grok does not provide detailed token info in the same way; approximate
+            input_tok = len(prompt.split())
+            output_tok = len(message.split())
             
             self.input_tokens += input_tok
             self.output_tokens += output_tok
@@ -75,9 +69,7 @@ class LLMProcessor:
             
             logger.debug(f"📊 Tokens used - Input: {input_tok}, Output: {output_tok}")
             
-            # Parse response
-            response_text = message.content[0].text
-            extracted_data = self._parse_json_response(response_text)
+            extracted_data = self._parse_json_response(message)
             
             if extracted_data and "line_items" in extracted_data:
                 item_count = len(extracted_data.get("line_items", []))
@@ -96,7 +88,7 @@ class LLMProcessor:
     
     def validate_extraction(self, extracted_data: Dict) -> Tuple[Dict, int, int]:
         """
-        Validate extracted data using Claude
+        Validate extracted data using Grok
         
         Args:
             extracted_data: Data extracted from OCR/LLM
@@ -109,23 +101,20 @@ class LLMProcessor:
             
             prompt = self._create_validation_prompt(extracted_data)
             
-            message = self.client.messages.create(
+            message = self.client.complete(
                 model=self.model,
-                max_tokens=1000,
-                messages=[
-                    {"role": "user", "content": prompt}
-                ]
+                prompt=prompt,
+                max_tokens=1000
             )
             
-            input_tok = message.usage.input_tokens
-            output_tok = message.usage.output_tokens
+            input_tok = len(prompt.split())
+            output_tok = len(message.split())
             
             self.input_tokens += input_tok
             self.output_tokens += output_tok
             self.total_tokens += (input_tok + output_tok)
             
-            response_text = message.content[0].text
-            validation_result = self._parse_json_response(response_text)
+            validation_result = self._parse_json_response(message)
             
             logger.info(f"✅ Validation complete")
             return validation_result, input_tok, output_tok
@@ -155,23 +144,20 @@ class LLMProcessor:
             
             prompt = self._create_reconciliation_prompt(line_items, claimed_total)
             
-            message = self.client.messages.create(
+            message = self.client.complete(
                 model=self.model,
-                max_tokens=500,
-                messages=[
-                    {"role": "user", "content": prompt}
-                ]
+                prompt=prompt,
+                max_tokens=500
             )
             
-            input_tok = message.usage.input_tokens
-            output_tok = message.usage.output_tokens
+            input_tok = len(prompt.split())
+            output_tok = len(message.split())
             
             self.input_tokens += input_tok
             self.output_tokens += output_tok
             self.total_tokens += (input_tok + output_tok)
             
-            response_text = message.content[0].text
-            reconciliation_result = self._parse_json_response(response_text)
+            reconciliation_result = self._parse_json_response(message)
             
             logger.info(f"✅ Reconciliation complete")
             return reconciliation_result, input_tok, output_tok
@@ -182,17 +168,7 @@ class LLMProcessor:
     
     
     def _parse_json_response(self, response_text: str) -> Dict:
-        """
-        Parse JSON from LLM response, handling markdown formatting
-        
-        Args:
-            response_text: Raw response from Claude
-            
-        Returns:
-            Parsed JSON dictionary
-        """
         try:
-            # Remove markdown code blocks if present
             if "```json" in response_text:
                 response_text = response_text.split("```json")[1].split("```")[0]
             elif "```" in response_text:
@@ -208,6 +184,7 @@ class LLMProcessor:
             logger.error(f"❌ JSON parse error: {e}")
             logger.debug(f"Response text: {response_text[:500]}")
             return {}
+    
     
     
     def _create_extraction_prompt(self, ocr_text: str, page_number: str) -> str:
