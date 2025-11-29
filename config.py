@@ -16,10 +16,12 @@ class Config:
     Loads all settings from environment variables
     """
     
-    # ========== Anthropic API Configuration ==========
-    ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
-    CLAUDE_MODEL = os.getenv("CLAUDE_MODEL", "claude-3-5-sonnet-20241022")
-    MAX_TOKENS = int(os.getenv("MAX_TOKENS", "2000"))
+    # ========== Grok API Configuration ==========
+    GROK_API_KEY = os.getenv("GROK_API_KEY")
+    GROK_API_BASE_URL = os.getenv("GROK_API_BASE_URL", "https://api.cometapi.com/v1")
+    GROK_MODEL = os.getenv("GROK_MODEL", "grok-beta")
+    MAX_TOKENS = int(os.getenv("MAX_TOKENS", "4000"))
+    TEMPERATURE = float(os.getenv("TEMPERATURE", "0.1"))
     
     # ========== Flask Configuration ==========
     FLASK_ENV = os.getenv("FLASK_ENV", "development")
@@ -27,7 +29,7 @@ class Config:
     PORT = int(os.getenv("PORT", "3000"))
     
     # ========== OCR Configuration ==========
-    OCR_SERVICE = os.getenv("OCR_SERVICE", "google_vision")
+    OCR_SERVICE = os.getenv("OCR_SERVICE", "tesseract")
     TESSERACT_CMD = os.getenv("TESSERACT_CMD", None)
     
     # ========== Logging Configuration ==========
@@ -56,16 +58,16 @@ class Config:
         Raises:
             ValueError: If required config is missing
         """
-        if not Config.ANTHROPIC_API_KEY:
+        if not Config.GROK_API_KEY:
             raise ValueError(
-                "❌ ANTHROPIC_API_KEY environment variable not set. "
+                "❌ GROK_API_KEY environment variable not set. "
                 "Please add it to .env file or set it as environment variable."
             )
         
-        if not Config.ANTHROPIC_API_KEY.startswith("sk-ant-"):
+        if not Config.GROK_API_KEY.startswith("sk-"):
             raise ValueError(
-                "⚠️  ANTHROPIC_API_KEY format seems invalid. "
-                "It should start with 'sk-ant-'"
+                "⚠️  GROK_API_KEY format seems invalid. "
+                "It should start with 'sk-'"
             )
         
         return True
@@ -84,15 +86,17 @@ class Config:
             "port": Config.PORT,
             "flask_env": Config.FLASK_ENV,
             "ocr_service": Config.OCR_SERVICE,
-            "claude_model": Config.CLAUDE_MODEL,
+            "grok_model": Config.GROK_MODEL,
+            "grok_base_url": Config.GROK_API_BASE_URL,
             "max_tokens": Config.MAX_TOKENS,
+            "temperature": Config.TEMPERATURE,
             "log_level": Config.LOG_LEVEL,
-            "api_key_set": bool(Config.ANTHROPIC_API_KEY),
+            "api_key_set": bool(Config.GROK_API_KEY),
         }
 
 
 # ============================================================================
-# Environment-specific configurations (optional for future use)
+# Environment-specific configurations
 # ============================================================================
 
 class DevelopmentConfig(Config):

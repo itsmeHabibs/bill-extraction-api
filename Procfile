@@ -1,10 +1,1 @@
-# ============================================================================
-# FILE 4: Procfile
-# ============================================================================
-cat > Procfile << 'EOF'
-web: gunicorn app:app
-EOF
-
-echo "✅ All files created successfully!"
-echo "📁 Directory structure ready for VS Code"
-echo "👉 Next: Create the Python files as shown below..."
+web: gunicorn app:app --workers=2 --timeout=120 --bind=0.0.0.0:$PORT

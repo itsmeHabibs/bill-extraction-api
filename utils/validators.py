@@ -1,33 +1,31 @@
 """
-Bill Validators Module
-Validates bill data for accuracy, consistency, and quality
+Validators - Data validation utilities
+Guards against common extraction errors
 """
 
 import logging
 import re
-from typing import Tuple, List, Dict
+from typing import Dict, List, Tuple
+from urllib.parse import urlparse
 
 logger = logging.getLogger(__name__)
 
 
 class BillValidator:
     """
-    Comprehensive validation for bill extraction data
-    Includes URL validation, amount validation, and reconciliation
+    Validation utilities for bill extraction
     """
-    
-    # ========== URL Validation ==========
     
     @staticmethod
     def validate_url(url: str) -> Tuple[bool, str]:
         """
-        Validate document URL format and accessibility
+        Validate document URL
         
         Args:
-            url: URL to validate
+            url: URL string to validate
             
         Returns:
-            Tuple of (is_valid: bool, error_message: str)
+            Tuple of (is_valid, error_message)
         """
         if not url:
             return False, "Document URL is required"
@@ -35,310 +33,196 @@ class BillValidator:
         if not isinstance(url, str):
             return False, "Document URL must be a string"
         
-        if not url.startswith(("http://", "https://")):
-            return False, "Document URL must start with http:// or https://"
-        
-        if len(url) > 2000:
-            return False, "Document URL is too long (max 2000 characters)"
-        
-        return True, ""
-    
-    # ========== Amount Validation ==========
-    
-    @staticmethod
-    def validate_amount(amount) -> bool:
-        """
-        Check if value is a valid monetary amount
-        
-        Args:
-            amount: Value to validate
-            
-        Returns:
-            True if valid positive number, False otherwise
-        """
+        # Basic URL validation
         try:
-            num = float(amount)
-            return num >= 0
-        except (ValueError, TypeError):
-            return False
-    
-    # ========== Line Item Validation ==========
+            result = urlparse(url)
+            if not all([result.scheme, result.netloc]):
+                return False, "Invalid URL format"
+            
+            if result.scheme not in ['http', 'https']:
+                return False, "URL must use HTTP or HTTPS protocol"
+            
+            return True, ""
+            
+        except Exception as e:
+            return False, f"Invalid URL: {str(e)}"
     
     @staticmethod
-    def validate_line_item(item: dict) -> Tuple[bool, str]:
+    def validate_line_item(item: Dict) -> Tuple[bool, str]:
         """
-        Validate a single line item with comprehensive checks
+        Validate a single line item
         
         Args:
             item: Line item dictionary
             
         Returns:
-            Tuple of (is_valid: bool, error_message: str)
+            Tuple of (is_valid, error_message)
         """
         required_fields = ["item_name", "item_amount", "item_rate", "item_quantity"]
         
-        # Check all required fields exist
+        # Check required fields
         for field in required_fields:
             if field not in item:
                 return False, f"Missing required field: {field}"
         
-        # ===== Validate Item Name =====
-        item_name = str(item["item_name"]).strip()
-        if not item_name:
-            return False, "item_name cannot be empty"
+        # Validate item_name
+        if not item["item_name"] or not isinstance(item["item_name"], str):
+            return False, "item_name must be a non-empty string"
         
-        # Guard: Check if name looks like metadata
-        if BillValidator._is_metadata_value(item_name):
-            return False, f"item_name appears to be metadata, not a product: '{item_name}'"
+        # Validate numeric fields
+        numeric_fields = ["item_amount", "item_rate", "item_quantity"]
+        for field in numeric_fields:
+            try:
+                value = float(item[field])
+                if value < 0:
+                    return False, f"{field} cannot be negative"
+            except (ValueError, TypeError):
+                return False, f"{field} must be a valid number"
         
-        # ===== Validate Amounts =====
-        if not BillValidator.validate_amount(item["item_amount"]):
-            return False, "item_amount must be a positive number"
-        
-        if not BillValidator.validate_amount(item["item_rate"]):
-            return False, "item_rate must be a positive number"
-        
-        if not BillValidator.validate_amount(item["item_quantity"]):
-            return False, "item_quantity must be a positive number"
-        
-        # ===== Validate Amount Consistency =====
-        quantity = float(item["item_quantity"])
-        rate = float(item["item_rate"])
-        amount = float(item["item_amount"])
-        
-        # Check if amount = quantity × rate (with tolerance)
-        calculated = quantity * rate
-        tolerance = max(0.01, calculated * 0.05)  # 5% tolerance
-        
-        if abs(calculated - amount) > tolerance:
-            logger.warning(
-                f"⚠️  Amount mismatch for '{item_name}': "
-                f"{quantity} × {rate} = {calculated}, but amount = {amount}"
-            )
+        # Guard against date/ID misinterpretation
+        if BillValidator._looks_like_date_or_id(item["item_name"]):
+            logger.warning(f"⚠️  Item name looks like date/ID: {item['item_name']}")
         
         return True, ""
     
-    # ========== Metadata Detection ==========
-    
     @staticmethod
-    def _is_metadata_value(text: str) -> bool:
+    def _looks_like_date_or_id(text: str) -> bool:
         """
-        Check if text appears to be metadata rather than item name
+        Check if text looks like a date or ID number
         
         Args:
             text: Text to check
             
         Returns:
-            True if appears to be metadata, False if appears to be item name
+            True if looks like date/ID
         """
-        text_lower = text.lower().strip()
+        text_lower = text.lower()
         
-        # Pattern matching for common metadata
-        metadata_patterns = [
-            r"^\d{4}-\d{2}-\d{2}",           # Dates: YYYY-MM-DD
-            r"^\d{2}/\d{2}/\d{4}",           # Dates: MM/DD/YYYY
-            r"^\d{1,2}[/-]\d{1,2}[/-]\d{2,4}",  # Various date formats
-            r"^inv[^a-z]*\d+",               # Invoice numbers
-            r"^ref[^a-z]*\d+",               # Reference numbers
-            r"^bill[^a-z]*\d+",              # Bill numbers
-            r"^id[^a-z]*\d+",                # IDs
-            r"^\d{2}:\d{2}",                 # Times: HH:MM
-            r"^page\s*\d+",                  # Page numbers
-            r"^\d+\s*[-/]\s*\d+$",           # Ranges like "1-5"
-            r"^[a-z]+-\d{6}",                # Invoice-like: PREFIX-XXXXXX
-            r"^\d{10,}$",                    # Long numbers (IDs)
-        ]
+        # Check for date keywords
+        date_keywords = ["date", "time", "invoice", "bill no", "receipt", "patient id"]
+        if any(keyword in text_lower for keyword in date_keywords):
+            return True
         
-        for pattern in metadata_patterns:
-            if re.match(pattern, text_lower):
-                logger.debug(f"🚫 Detected metadata pattern in: '{text}'")
-                return True
-        
-        # Check if text is ONLY numbers/special chars (no product name)
-        if re.match(r"^[\d\-/:.]+$", text):
-            logger.debug(f"🚫 Text contains only numbers/special chars: '{text}'")
+        # Check if mostly numbers (likely an ID)
+        digits = sum(c.isdigit() for c in text)
+        if len(text) > 0 and digits / len(text) > 0.8:
             return True
         
         return False
     
-    # ========== Duplicate Detection ==========
-    
     @staticmethod
-    def check_duplicates(items: List[dict]) -> Tuple[int, List[str]]:
+    def check_duplicates(line_items: List[Dict]) -> Tuple[int, List[Dict]]:
         """
-        Check for duplicate items across pages or within same page
+        Check for duplicate line items
         
         Args:
-            items: List of line items from all pages
+            line_items: List of line item dictionaries
             
         Returns:
-            Tuple of (duplicate_count, list_of_duplicate_details)
+            Tuple of (duplicate_count, list_of_duplicates)
         """
         seen = {}
         duplicates = []
         
-        for idx, item in enumerate(items):
-            # Create hashable key from item details
+        for item in line_items:
+            # Create a key from name, amount, and quantity
             key = (
                 item.get("item_name", "").lower().strip(),
-                round(float(item.get("item_amount", 0)), 2),
-                round(float(item.get("item_quantity", 0)), 2)
+                float(item.get("item_amount", 0)),
+                float(item.get("item_quantity", 0))
             )
             
             if key in seen:
-                duplicate_info = (
-                    f"Item: {item.get('item_name')} | "
-                    f"Amount: {item.get('item_amount')} | "
-                    f"Qty: {item.get('item_quantity')}"
-                )
-                duplicates.append(duplicate_info)
-                logger.warning(f"⚠️  Potential duplicate found: {duplicate_info}")
-                seen[key] += 1
+                duplicates.append({
+                    "item": item,
+                    "first_occurrence": seen[key]
+                })
             else:
-                seen[key] = 1
+                seen[key] = item
         
-        duplicate_count = len([v for v in seen.values() if v > 1])
-        return duplicate_count, duplicates
-    
-    # ========== Total Reconciliation ==========
+        return len(duplicates), duplicates
     
     @staticmethod
-    def reconcile_totals(items: List[dict], claimed_total: float) -> dict:
+    def validate_extraction_quality(line_items: List[Dict]) -> Dict[str, any]:
         """
-        Reconcile extracted items with claimed total
+        Validate overall extraction quality
         
         Args:
-            items: List of extracted items
-            claimed_total: Total amount claimed in bill
+            line_items: List of extracted line items
             
         Returns:
-            Dictionary with reconciliation report
+            Dictionary with quality metrics
         """
-        # Calculate total from items
-        calculated_total = sum(
-            float(item.get("item_amount", 0)) for item in items
-        )
+        total_items = len(line_items)
+        valid_items = 0
+        warnings = []
         
-        variance = abs(claimed_total - calculated_total)
-        variance_percentage = (
-            (variance / claimed_total * 100) if claimed_total > 0 else 0
-        )
-        
-        # Determine reconciliation status
-        if variance < 0.01:
-            status = "perfect"
-            logger.info("✅ Totals match perfectly")
-        elif variance_percentage < 1:
-            status = "acceptable"
-            logger.info(f"✅ Totals match within acceptable range (<1%)")
-        else:
-            status = "needs_review"
-            logger.warning(
-                f"⚠️  Total variance: ₹{variance:.2f} ({variance_percentage:.2f}%)"
-            )
-        
-        return {
-            "calculated_total": round(calculated_total, 2),
-            "claimed_total": claimed_total,
-            "matches": variance < 0.01,
-            "variance": round(variance, 2),
-            "variance_percentage": round(variance_percentage, 2),
-            "reconciliation_status": status
-        }
-    
-    # ========== Extraction Quality Assessment ==========
-    
-    @staticmethod
-    def validate_extraction_quality(
-        items: List[dict],
-        claimed_total: float = None
-    ) -> dict:
-        """
-        Comprehensive quality validation of extraction
-        
-        Args:
-            items: Extracted items
-            claimed_total: Bill total for reconciliation (optional)
-            
-        Returns:
-            Quality report dictionary
-        """
-        report = {
-            "total_items": len(items),
-            "valid_items": 0,
-            "invalid_items": 0,
-            "issues": [],
-            "quality_score": 0.0
-        }
-        
-        # ===== Validate Each Item =====
-        for idx, item in enumerate(items):
-            is_valid, error_msg = BillValidator.validate_line_item(item)
+        for item in line_items:
+            is_valid, error = BillValidator.validate_line_item(item)
             if is_valid:
-                report["valid_items"] += 1
+                valid_items += 1
             else:
-                report["invalid_items"] += 1
-                report["issues"].append(
-                    f"Item {idx + 1}: {error_msg}"
-                )
+                warnings.append(f"Invalid item: {error}")
         
-        # ===== Check for Duplicates =====
-        dup_count, dup_details = BillValidator.check_duplicates(items)
-        if dup_count > 0:
-            report["issues"].append(f"Found {dup_count} potential duplicate items")
-            # Include first 3 duplicates
-            report["issues"].extend(dup_details[:3])
+        # Check for suspicious patterns
+        if total_items == 0:
+            warnings.append("No line items extracted")
         
-        # ===== Calculate Quality Score =====
-        if report["total_items"] > 0:
-            validity_score = report["valid_items"] / report["total_items"]
-        else:
-            validity_score = 0
+        # Calculate quality score
+        quality_score = (valid_items / total_items * 100) if total_items > 0 else 0
         
-        # Penalize for duplicates
-        if dup_count > 0:
-            validity_score *= (1 - (dup_count * 0.1))
+        report = {
+            "total_items": total_items,
+            "valid_items": valid_items,
+            "quality_score": round(quality_score, 2),
+            "warnings": warnings
+        }
         
-        report["quality_score"] = round(max(0, validity_score) * 100, 2)
-        
-        # ===== Log Summary =====
-        logger.info(
-            f"📊 Quality Assessment: {report['valid_items']}/{report['total_items']} "
-            f"valid items | Score: {report['quality_score']}%"
-        )
+        logger.info(f"📊 Quality Score: {quality_score:.2f}% ({valid_items}/{total_items} valid)")
         
         return report
     
-    # ========== Utility Methods ==========
-    
     @staticmethod
-    def sanitize_item_name(name: str) -> str:
+    def reconcile_totals(
+        extracted_items: List[Dict],
+        claimed_total: float
+    ) -> Dict[str, any]:
         """
-        Sanitize item name for consistency
+        Reconcile extracted totals with claimed bill total
         
         Args:
-            name: Item name to sanitize
+            extracted_items: List of extracted line items
+            claimed_total: Total amount claimed in bill
             
         Returns:
-            Sanitized item name
+            Dictionary with reconciliation details
         """
-        # Remove extra whitespace
-        name = ' '.join(name.split())
+        # Calculate sum of extracted amounts
+        extracted_total = sum(float(item.get("item_amount", 0)) for item in extracted_items)
         
-        # Remove special characters but keep alphanumeric and common symbols
-        name = re.sub(r'[^a-zA-Z0-9\s\.\-/]', '', name)
+        # Calculate variance
+        variance = abs(extracted_total - claimed_total)
+        variance_percentage = (variance / claimed_total * 100) if claimed_total > 0 else 0
         
-        return name.strip()
-    
-    @staticmethod
-    def format_currency(amount: float) -> str:
-        """
-        Format amount as currency
+        # Determine status
+        if variance == 0:
+            status = "perfect_match"
+        elif variance_percentage < 1:
+            status = "acceptable"
+        elif variance_percentage < 5:
+            status = "needs_review"
+        else:
+            status = "significant_discrepancy"
         
-        Args:
-            amount: Numeric amount
-            
-        Returns:
-            Formatted currency string
-        """
-        return f"₹{amount:,.2f}"
+        reconciliation = {
+            "extracted_total": round(extracted_total, 2),
+            "claimed_total": round(claimed_total, 2),
+            "variance": round(variance, 2),
+            "variance_percentage": round(variance_percentage, 2),
+            "status": status
+        }
+        
+        logger.info(f"💰 Total Reconciliation: {status} "
+                   f"(Extracted: {extracted_total:.2f}, Claimed: {claimed_total:.2f})")
+        
+        return reconciliation

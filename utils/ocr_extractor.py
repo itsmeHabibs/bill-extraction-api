@@ -1,13 +1,13 @@
 """
-OCR Extractor Module
-Handles Optical Character Recognition for bill images
+OCR Extractor - Extracts text from document images
+Supports Tesseract OCR
 """
 
-import io
 import logging
 import requests
-from typing import Optional
+from io import BytesIO
 from PIL import Image
+import pytesseract
 from config import Config
 
 logger = logging.getLogger(__name__)
@@ -15,233 +15,136 @@ logger = logging.getLogger(__name__)
 
 class OCRExtractor:
     """
-    Extracts text from bill images using OCR
-    Supports multiple OCR services: Google Vision and Tesseract
+    Handles OCR text extraction from document images
     """
     
     def __init__(self):
-        """Initialize OCR extractor with configured service"""
-        self.service = Config.OCR_SERVICE
-        logger.info(f"🔧 Initializing OCR with service: {self.service}")
+        """Initialize OCR extractor"""
+        self.ocr_service = Config.OCR_SERVICE
         
-        # Configure Tesseract if using local OCR
-        if self.service == "tesseract" and Config.TESSERACT_CMD:
-            try:
-                import pytesseract
-                pytesseract.pytesseract.pytesseract_cmd = Config.TESSERACT_CMD
-                logger.info(f"✅ Tesseract configured at: {Config.TESSERACT_CMD}")
-            except Exception as e:
-                logger.warning(f"⚠️  Tesseract configuration failed: {e}")
+        # Set Tesseract command path if specified
+        if Config.TESSERACT_CMD:
+            pytesseract.pytesseract.tesseract_cmd = Config.TESSERACT_CMD
+        
+        logger.info(f"✅ OCR Extractor initialized with service: {self.ocr_service}")
     
-    
-    def extract_text_from_url(self, document_url: str) -> Optional[str]:
+    def extract_text_from_url(self, image_url: str) -> str:
         """
-        Download image from URL and extract text using OCR
+        Extract text from image URL using OCR
         
         Args:
-            document_url: URL to the document image
+            image_url: URL of the document image
             
         Returns:
-            Extracted text string, or None if extraction fails
-            
-        Raises:
-            None - Logs errors and returns None gracefully
+            Extracted text string
         """
+        logger.info(f"🔍 Starting OCR extraction from URL")
+        
         try:
-            logger.info(f"📥 Downloading document from URL...")
-            
-            # Download image from URL
-            response = requests.get(
-                document_url,
-                timeout=Config.REQUEST_TIMEOUT
-            )
+            # Download image
+            logger.debug(f"📥 Downloading image from URL...")
+            response = requests.get(image_url, timeout=30)
             response.raise_for_status()
             
-            logger.info(f"✅ Document downloaded successfully ({len(response.content)} bytes)")
+            # Open image
+            image = Image.open(BytesIO(response.content))
+            logger.info(f"✅ Image loaded successfully. Size: {image.size}")
             
-            # Open image from bytes
-            img = Image.open(io.BytesIO(response.content))
-            logger.info(f"🖼️  Image loaded: {img.size} {img.format}")
+            # Preprocess image
+            image = self._preprocess_image(image)
             
-            # Convert to RGB if necessary (handle RGBA, grayscale, etc.)
-            if img.mode != 'RGB':
-                img = img.convert('RGB')
-                logger.info(f"🔄 Image converted to RGB mode")
+            # Extract text using Tesseract
+            text = self._extract_with_tesseract(image)
             
-            # Preprocess image for better OCR
-            img = self.preprocess_image(img)
+            logger.info(f"✅ OCR extraction complete. Text length: {len(text)} chars")
+            return text
             
-            # Extract text based on configured service
-            if self.service == "google_vision":
-                extracted_text = self._extract_with_google_vision(img)
-            else:
-                extracted_text = self._extract_with_tesseract(img)
-            
-            if extracted_text:
-                logger.info(f"📝 Extracted {len(extracted_text)} characters of text")
-                return extracted_text
-            else:
-                logger.warning("⚠️  OCR returned empty text")
-                return None
-                
-        except requests.exceptions.Timeout:
-            logger.error(f"❌ Request timeout while downloading document")
-            return None
-        except requests.exceptions.ConnectionError:
-            logger.error(f"❌ Connection error while downloading document")
-            return None
         except requests.exceptions.RequestException as e:
-            logger.error(f"❌ Failed to download document: {e}")
-            return None
+            logger.error(f"❌ Failed to download image: {e}")
+            raise Exception(f"Failed to download image from URL: {str(e)}")
+        
         except Exception as e:
             logger.error(f"❌ OCR extraction failed: {e}")
-            import traceback
-            logger.debug(traceback.format_exc())
-            return None
+            raise Exception(f"Failed to extract text from image: {str(e)}")
     
+    def _preprocess_image(self, image: Image.Image) -> Image.Image:
+        """
+        Preprocess image for better OCR accuracy
+        
+        Args:
+            image: PIL Image object
+            
+        Returns:
+            Preprocessed PIL Image
+        """
+        logger.debug("🔧 Preprocessing image...")
+        
+        # Convert to RGB if necessary
+        if image.mode != 'RGB':
+            image = image.convert('RGB')
+        
+        # Resize if too large (max 4000px on longest side)
+        max_size = 4000
+        if max(image.size) > max_size:
+            ratio = max_size / max(image.size)
+            new_size = tuple(int(dim * ratio) for dim in image.size)
+            image = image.resize(new_size, Image.Resampling.LANCZOS)
+            logger.debug(f"📏 Resized image to {new_size}")
+        
+        return image
     
     def _extract_with_tesseract(self, image: Image.Image) -> str:
         """
-        Extract text using Tesseract OCR (local)
+        Extract text using Tesseract OCR
         
         Args:
             image: PIL Image object
             
         Returns:
-            Extracted text string
+            Extracted text
         """
+        logger.debug("🔤 Running Tesseract OCR...")
+        
         try:
-            import pytesseract
-            logger.info("🔍 Extracting with Tesseract OCR...")
+            # Configure Tesseract
+            custom_config = r'--oem 3 --psm 6'
             
-            text = pytesseract.image_to_string(image, lang='eng')
+            # Extract text
+            text = pytesseract.image_to_string(
+                image,
+                config=custom_config,
+                lang='eng'
+            )
             
-            logger.info(f"✅ Tesseract extraction successful")
-            return text.strip()
+            # Clean text
+            text = self._clean_text(text)
             
-        except ImportError:
-            logger.error("❌ pytesseract not installed")
-            return ""
+            return text
+            
+        except pytesseract.TesseractNotFoundError:
+            logger.error("❌ Tesseract not found. Please install Tesseract OCR.")
+            raise Exception(
+                "Tesseract OCR not found. Please install: "
+                "https://github.com/tesseract-ocr/tesseract"
+            )
+        
         except Exception as e:
-            logger.error(f"❌ Tesseract extraction error: {e}")
-            return ""
+            logger.error(f"❌ Tesseract extraction failed: {e}")
+            raise Exception(f"Tesseract OCR failed: {str(e)}")
     
-    
-    def _extract_with_google_vision(self, image: Image.Image) -> str:
+    def _clean_text(self, text: str) -> str:
         """
-        Extract text using Google Cloud Vision API
+        Clean extracted text
         
         Args:
-            image: PIL Image object
+            text: Raw OCR text
             
         Returns:
-            Extracted text string
+            Cleaned text
         """
-        try:
-            from google.cloud import vision
-            
-            logger.info("🔍 Extracting with Google Cloud Vision...")
-            
-            client = vision.ImageAnnotatorClient()
-            
-            # Convert PIL image to bytes
-            img_byte_arr = io.BytesIO()
-            image.save(img_byte_arr, format='PNG')
-            img_byte_arr.seek(0)
-            
-            image_content = img_byte_arr.read()
-            image_obj = vision.Image(content=image_content)
-            
-            # Call Google Cloud Vision API
-            response = client.document_text_detection(image=image_obj)
-            
-            # Extract full text
-            if response.full_text:
-                logger.info(f"✅ Google Vision extraction successful")
-                return response.full_text.strip()
-            else:
-                logger.warning("⚠️  Google Vision returned no text")
-                return ""
-                
-        except ImportError:
-            logger.warning("⚠️  google-cloud-vision not installed, falling back to Tesseract")
-            return self._extract_with_tesseract(image)
-        except Exception as e:
-            logger.error(f"❌ Google Vision extraction error: {e}")
-            logger.info("🔄 Falling back to Tesseract...")
-            return self._extract_with_tesseract(image)
-    
-    
-    def preprocess_image(self, image: Image.Image) -> Image.Image:
-        """
-        Preprocess image to improve OCR accuracy
-        Includes: grayscale conversion, thresholding, denoising
+        # Remove excessive whitespace
+        lines = [line.strip() for line in text.split('\n')]
+        lines = [line for line in lines if line]  # Remove empty lines
         
-        Args:
-            image: PIL Image object
-            
-        Returns:
-            Preprocessed PIL Image object
-        """
-        try:
-            import cv2
-            import numpy as np
-            
-            logger.info("🎨 Preprocessing image...")
-            
-            # Convert to OpenCV format
-            cv_image = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
-            
-            # Convert to grayscale
-            gray = cv2.cvtColor(cv_image, cv2.COLOR_BGR2GRAY)
-            logger.debug("  • Converted to grayscale")
-            
-            # Apply thresholding to get binary image
-            _, thresh = cv2.threshold(gray, 150, 255, cv2.THRESH_BINARY)
-            logger.debug("  • Applied binary threshold")
-            
-            # Denoise image
-            denoised = cv2.fastNlMeansDenoising(thresh)
-            logger.debug("  • Applied denoising")
-            
-            # Convert back to PIL
-            result = Image.fromarray(denoised)
-            logger.info("✅ Image preprocessing completed")
-            return result
-            
-        except ImportError:
-            logger.warning("⚠️  opencv-python not installed, using original image")
-            return image
-        except Exception as e:
-            logger.warning(f"⚠️  Image preprocessing failed: {e}, using original")
-            return image
-    
-    
-    @staticmethod
-    def validate_image(image: Image.Image) -> bool:
-        """
-        Validate that image is suitable for OCR
-        
-        Args:
-            image: PIL Image object
-            
-        Returns:
-            True if image is valid, False otherwise
-        """
-        try:
-            # Check image size
-            width, height = image.size
-            if width < 100 or height < 100:
-                logger.warning(f"⚠️  Image too small: {width}x{height}")
-                return False
-            
-            # Check image format
-            if image.format not in ['PNG', 'JPEG', 'GIF', 'BMP', 'TIFF']:
-                logger.warning(f"⚠️  Unsupported image format: {image.format}")
-                return False
-            
-            return True
-            
-        except Exception as e:
-            logger.error(f"❌ Image validation error: {e}")
-            return False
+        cleaned_text = '\n'.join(lines)
+        return cleaned_text

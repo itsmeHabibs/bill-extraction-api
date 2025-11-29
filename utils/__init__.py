@@ -1,8 +1,7 @@
-# ============================================================================
 # utils/__init__.py
-# ============================================================================
-
-"""Utility modules for bill extraction"""
+"""
+Utility modules for bill extraction
+"""
 
 from .ocr_extractor import OCRExtractor
 from .llm_processor import LLMProcessor
@@ -15,7 +14,3 @@ __all__ = [
     'ResponseFormatter',
     'BillValidator'
 ]
-
-__version__ = '1.0.0'
-__author__ = 'Your Name'
-__description__ = 'Bill Data Extraction API Utilities'
