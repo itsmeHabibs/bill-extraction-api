@@ -1,0 +1,41 @@
+================================================================================
+DEBUG INFO - Page 1
+================================================================================
+
+OCR TEXT:
+--------------------------------------------------------------------------------
+E )
+~ Patiant Hase — T A
+P =< B IS
+fatiades 0BG R Gy | twetiht sent
+LT (0 A TR T TR~y
+ORF LT w163 fmizi o (ED P~
+TTem e T e GGk, TEAGE Twl i
+T 157000
+S ~_
+r < Date : 52120347
+Address. e SGI T
+A
+ame f the 019 s EEagEe | S |
+o | ot oo i o0
+[T 25 /
+) 1943 9
+o S e 1580 T
+“hold the' “necessa vald lcens® Tl
+n-umuww""
+
+LLM RESPONSE:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Final Bill",
+  "line_items": [],
+  "total_amount": 0.0
+}
+
+PARSED DATA:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Final Bill",
+  "line_items": [],
+  "total_amount": 0.0
+}

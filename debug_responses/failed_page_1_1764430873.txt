@@ -1,0 +1,79 @@
+================================================================================
+DEBUG INFO - Page 1
+================================================================================
+
+OCR TEXT:
+--------------------------------------------------------------------------------
+1PD Bl (F)
+bane, - o [ v——
+Res.to. D Mo, :
+| |potentrme Az Gender
+Gudan ama AdkOLATme  : wnocas 213t
+e Dichamedss  : aNovars 1312
+Enpancinent No.OfDays
+narance Rom e, :
+[ [ s Room Categry
+[ovcose Sevie Desptin ¢
+TREGICWECTWIY — w1 G
+omeTRos R Toan 1 s
+OCGTASED  Gane 1 e
+e S 11
+DDA oA en 3 iar
+STNERWIETROIONIG Goon 3 a1ee
+[ s fI o
+oo o 1 aw
+BB G Doe 1 un
+B parToan A wame 1 nwe
+e S
+et S 4
+i [0 CNSIABE ARSI | s s
+e e S 1%
+AT G w2
+Nrubosomsonaoy o 1y
+i [0 GRS GRS 36N i e o
+ey R S T
+NUDouomsmao a1 @t
+s [0 CONSIMRE RS ISP i awe 3o
+ey o R T 1]
+DSMCRERECIOO e 3 o
+OO O, Yivg 3 sis
+vy w1 e
+POSTARE LSO prcorr R
+NoueuavoRovs 'siws 1
+P e S S~ 1
+RO 0501900 R
+STy o 5w
+ROESNOAMES  Gane 1 1o
+e cbcommi S s ey
+v P .
+NruDKneion N o 6 tmes
+NAUDDSOmesO Lo 4 s
+NAUDRSORMNG  enn 2 i
+STNERUIET RSN ZIG. o 5 a1
+NooOCNTTE. Gt 5 s
+sorsas (1 CONSIMRE OB 47PN i| e mw
+SRowTaRROETS G0 1 1ae
+ioims [0 AE OGS 7SS i sen sz
+Buce cere wor we 1 mm
+OmemoEnewk s 1 sw
+ncAmoDe R T 11}
+Somomomecoo  moes 1 s
+SommowmmEnc s 4 s
+Somanaoieme e 1 e
+=y CREr=rrarr
+
+LLM RESPONSE:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Final Bill",
+  "line_items": [],
+  "total_amount": 0.0
+}
+
+PARSED DATA:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Final Bill",
+  "line_items": [],
+  "total_amount": 0.0
+}

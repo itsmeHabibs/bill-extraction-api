@@ -1,0 +1,30 @@
+================================================================================
+DEBUG INFO - Page 1
+================================================================================
+
+OCR TEXT:
+--------------------------------------------------------------------------------
+e e BT WIS
+Payer Payablo
+SL Suvice SuvicoMame  AlssCode  DrName StatDste EndDate QyDuraton  RefTrt Dii%) Amount()
+Yo cods (Ordero.) (inmins)
+[consutationt3993t1)
+onsutston
+2 oo w0 rome
+Discamer: Al e oo datos ndcatod 35 Dt & Timo of o oty cnly Pagesorsn
+
+LLM RESPONSE:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}
+
+PARSED DATA:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}

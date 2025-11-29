@@ -1,0 +1,40 @@
+================================================================================
+DEBUG INFO - Page 1
+================================================================================
+
+OCR TEXT:
+--------------------------------------------------------------------------------
+»
+1P No. Admission Date__:21-10:2025__ 003653t
+D B02%  oesmoorm
+Olschargeoue 2810 nas22Am
+AgefGender ¢
+Aveatiame. &
+ity ame
+obieNo.
+Room Mo,
+Ward Type
+SNo.__PARTICULARS FROWOATE TODATE _ AMOUNT WOOF TOTALANT
+Ameatinrds Rets O Hurdd gy Thoad S p——
+Discount s
+L] NetAmount 18500000
+Paid Amount 18500000
+DueAmoumt ¢ o
+Retund Amount ¢ o000
+)
+
+LLM RESPONSE:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Final Bill",
+  "line_items": [],
+  "total_amount": 0.0
+}
+
+PARSED DATA:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Final Bill",
+  "line_items": [],
+  "total_amount": 0.0
+}

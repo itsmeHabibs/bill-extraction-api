@@ -1,0 +1,14 @@
+[
+  {
+    "document": "train_sample_1_page-0001",
+    "status": "success",
+    "items": 6,
+    "tokens": 2414,
+    "time": 3.983590841293335
+  },
+  {
+    "document": "train_sample_1_page-0002",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  }
+]

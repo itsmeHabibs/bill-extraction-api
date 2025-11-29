@@ -1,0 +1,42 @@
+================================================================================
+DEBUG INFO - Page 1
+================================================================================
+
+OCR TEXT:
+--------------------------------------------------------------------------------
+m MEDICOS
+— L B
+- - RN (LS g
+P e TEe T oEE
+i oo omaon 36 ZONEG 16MG L GLUTATHION. 2 umm 0w T
+o o e s P o e
+= e oomnea e om G
+o osmm o3 B - B
+o an Pgmoamc g2
+‘d o o oo LoSHIL PO w8
+A doamle | am
+‘i
+S . T
+|| s %
+e CE TR s for 2
+e & W o8 W i i
+i i it
+il
+i
+o
+
+LLM RESPONSE:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Final Bill",
+  "line_items": [],
+  "total_amount": 0.0
+}
+
+PARSED DATA:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Final Bill",
+  "line_items": [],
+  "total_amount": 0.0
+}

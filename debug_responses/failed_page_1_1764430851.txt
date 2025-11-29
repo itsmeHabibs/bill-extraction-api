@@ -1,0 +1,64 @@
+================================================================================
+DEBUG INFO - Page 1
+================================================================================
+
+OCR TEXT:
+--------------------------------------------------------------------------------
+[ET—— e ;
+i e Badue s
+Namisionie [ pots S
+Doy Do P Crey "
+CrmmtigDoctr ninisionRo
+[T @ om
+[ ——
+VEINOLINES 100G BXTRONSON 112y kom0 mo TR g
+TUBBRCUUNSYRIGHSTI0. 1z sison: vy o P e
+DI SYRINGE Sul witouT ’ : o
+DisrosYRn [T pp——— 0 s
+DISROSYRINGE oML WITHOUT ; s
+ot 208 0ED! Ny 0 o s
+SYRINGEWONFIDLESNLLL 1 s N ot
+svmgey [T — 0 o
+TEGADERM 163 () M TIE) A3 Koo D o e eas
+STERILE GLOVES 05 SURGICARS) R
+s s o o 20 s
+STERILEGLOVES SURGICARD. 11y stk o o TP
+saw)
+BTN ITRLE GLoVES e
+FENGUNGROMEDUNM FONDLR 1111202505 10 1nox e
+T
+POLYVOL PO [OML IS0 1,11 61 o
+rouyvo s A ™ o
+URINEBAG PARDXKONSON) UPAE 1113025 G2H110S) 30 o wi i
+SUCTONCATIETERNOSIOD 11z smiss o o M
+SCTONCATETRNOS00 s e G, B g
+BLOODLANCETSEASY CARE LA 1113025362501 Sep29 mo
+TEDDY DA AR BORS P,
+Tt s iro i
+SrEcicaN L RowsON T oz oz
+VEROUNES N EXTAOMSON 1312 o T e
+TUBBRCULNSYRIGHS2TID. 11z sisom: vy mo M0
+Do svRNGEL wITOUT e o 0T
+Disros [Ip—— 0 o
+DITOSYRINGE SILWTHOUT B} o
+Do sy [Tpp—— sx0 n
+DISTOSYRNGE L wTOUT ) i 2w
+Bno [ oz e
+o
+RS s e
+
+LLM RESPONSE:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}
+
+PARSED DATA:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}

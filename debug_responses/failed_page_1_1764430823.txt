@@ -1,0 +1,67 @@
+================================================================================
+DEBUG INFO - Page 1
+================================================================================
+
+OCR TEXT:
+--------------------------------------------------------------------------------
+[re— BN
+Pt Name il tonans
+Adnision Do anansor Sponsr
+Dicharg Due PayCacaory
+ConsingDoctor Admision o
+IreDe B Expbate o G e
+DrugsSurgieal Consumabies
+NoaDPCONTEA
+Blood Cenre
+Sursia Disporabis
+BLOODSET (ROMSON) 0112025 K25G00039 Jun30 o awes w08
+BLOODSET(ROMSON) 0812028 K25G020039 Jun30 N0 205 208
+BLOODSET(ROMSON ) 081172028 K25G00039 Jun30 iNo__ 2305 23105
+o s s
+Cenrat Store - Vedicine
+Drugsvtiicines
+BABY MASSAGE 100MLOIL GG SSOS dmaT IBOTILE 12456 12458
+STERILE WATER FORINJECTIONS 3011 21 . P
+TP ML AMANTA OUINRRS ITSHS0RS M2 o a
+STERILE WATER FOR INJECTIONS — " I
+Sk WA s s s v wer
+AQUAPLUSNS 1o 1v GRS W2 IBOTILE 440 3490
+AMITAX 100MG INIECTION s L A AL 600 3600
+DEXTROSE 10% S00ML IV FLUID " 5 36
+pERS s s R 1BormLE 36
+- . - K03 v Lous g
+KENADION 0ML INJECTION U INOAKSOS M2 5%
+DEXTROSE 10% SOML IV FLUID i . .
+Dixiacs ARSI M2 1BOTILE 36
+DEXTROSE 10% SOMLIVFLUID 0\ i 5 um
+oty SRS M2 2BOTILE un
+AMITAX 100MG INECTION s A L e s
+STERILE WATER FOR INJECTIONS R o o
+STERILL N G208 RS s L w61
+AQUAPLUSNS 1oL 1V GRS W2 IBOTILE 4430 4490
+AMINOVEN INFANT 10% MLV 0112025 167M2603  0c-26 AL 200 200
+SMOFLIPID 20% 25011V UGS IGTIAR 2 IBOTILE L0900 L0900
+i« WSS My Ty
+NULTIVIN 1ML IJECTION ARG My 2
+DEXTROSE 109 SOMLIVFLUD 01 v ome 36
+Pt ARSI Feb2 TBOTILE 36
+AMINOVEN INFANT I0% MLV 06412025 167M2603  0c-26 AL o200 6200
+SMOFLIPID 20% 25011V A0SR 2 UBOTILE L0900 109500
+P 100123
+Fred On 19112028 16:14
+
+LLM RESPONSE:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}
+
+PARSED DATA:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}

@@ -1,0 +1,65 @@
+================================================================================
+DEBUG INFO - Page 1
+================================================================================
+
+OCR TEXT:
+--------------------------------------------------------------------------------
+[— wine
+Pt Name D waos
+Adnision Dtc s Sporor
+Dicarye D PyCucgry S
+Consing Doctr AdnisionNo
+Onter . P
+BLOODSUGAR BY GLUCOMETER nas e wm N
+BLOOD SUGAR BY GLUCOMETER ws e wm ne
+BLOOD SUGAR BY GLUCOMETER Bias AN w0
+BLOOD SUGAR BY GLUCOMETER wias e w0 ne
+BLOOD SUGAR BY GLUCOMETER wias e w0 ne
+BLOODSUGAR BY GLUCOMETER s e wm  ne
+BLOOD SUGAR BY GLUCOMETER Wiz e s e
+BLOOD SUGAR BY GLUCOMETER s e wm ne
+BLOOD SUGAR BY GLUCOMETER s e 6w
+BLOODSUGAR BY GLUCOMETER s e 0w
+BLOODSUGAR BY GLUCOMETER wna e s e
+BLOODSUGAR BY GLUCOMETER wes e wm ne
+BLOODSUGAR Y GLUCOMETER Wias N em o
+BLOOD SUGAR BY GLUCOMETER mas 2% w0
+BLOOD SUGAR BY GLUCOMETER mas e w0
+BLOODSUGAR BY GLUCOMETER omas e ww ne
+BLOOD SUGAR BY GLUCOMETER mas e wm ne
+BLOOD SUGAR Y GLUCOMETER mas e wm ne
+LUMBAR PUNCTURE mas e Lm0
+BLOOD SUGAR BY GLUCOMETER mas e om0 ne
+BLOOD SUGAR BY GLUCOMETER Wi e mm ne
+BLOOD SUGAR BY GLUCOMETER Wi e wm ne
+BLOOD SUGAR BY GLUCOMETR Wiz e wm ne
+BLOODSUGAR BY GLUCOMETER s e wm ne
+BLOOD SUGAR BY GLUCOMETER s e wm N
+o [
+o —
+VASCULAR CLARIS NON STICK FORCEP Gnas e w00 e
+WARMING MATTRESS osmas N 7000 e
+FLOW SENSOR (FABIAN VENTILATORKD: Tusir Pk Bias e som 0
+FLOW SENSOR (ABIAN VENTILATORKOD: Tusar Pk Wias e swm i
+o 2w 2e0m
+o Bank
+BLOOD GROUMNG s e w000 oam
+BLOOD GROUPING -NAT s N do0o0 52w
+FRESH FROZEN PLASMA (WITIOUT REPLACE) - s INe %000 sk
+P onaoes 161a
+
+LLM RESPONSE:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Final Bill",
+  "line_items": [],
+  "total_amount": 0.0
+}
+
+PARSED DATA:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Final Bill",
+  "line_items": [],
+  "total_amount": 0.0
+}

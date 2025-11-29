@@ -1,0 +1,79 @@
+================================================================================
+DEBUG INFO - Page 1
+================================================================================
+
+OCR TEXT:
+--------------------------------------------------------------------------------
+1°D Bil ()
+v a0me * 2amens 1506
+Rt D to. 1
+patertName ¢ Age  Gender
+e AdmDLATIE : gnovas 23t
+it - . DidwgeDats  : a4movazs 112
+Enpareiment  : No. O Days :
+ouance ¢ Room No. :
+ocer Name ¢ Roon gy
+ot ¢ e
+HeNcode . Senvee Dessiptin
+L T
+UOSMOTIGTNTIEY.  Gastigo S s
+v 10 COMABLE QeS8 s wr
+NOWUABROVIES s 1 4
+NORESIGINTASIED  Game 1 a0
+i 10 CORSUMABLE s 42518250 % 950
+W SETTRANS FOW @so0 1 ws
+v |10 CoSuntE Quitces 4204125 T £
+o eveser [ R
+PURANTAC SOG4 iz e
+semsaosT G L s
+sovs |10 COBIMAE GURGEs 6721/ s e
+N EHESET G s 2 ma
+| o s e sz )
+DTSR GONG I  Eatont Y
+NNAABRONS 21703 )
+| NaEoiso 160 G s se
+| UnceroLme srery s 7 me
+NRESNGITASED G 1 o
+| RUDNSISCAION e 4 ot
+NAUDRRMAAC w1 o
+U bBvrRosE e s Lorezas T
+SRIGEROIETROONIG. e 2 210
+| STRNGE R ROV Gaan 1 e
+| [ | concomsant unces. - assnrsr e ey
+| TAPE POER MIGOPORESINGH  S072505 T
+IDOApHARMACY CHARGES
+ioscm[IDOn oy GRS ags00 20000
+s avms | oM, kY CARGES ey 1060
+| ABORATORY GHARGES
+R v e 2520m 1m0
+TR ATIGEN 165 16205 000
+LG T ol 500
+CBC COMETE 00D COUNT s V- 2000
+Lo T xhols 500
+CONRETE 06 x e 000
+o oo T xSa00 oy
+VoA TEST 5213 20000
+VIR RACTION TEST LT V206 0
+Fricn a0
+oramems LnsonaToR cRces  sssoAORGN w0 o
+o xvoor w0
+10 LASORATORY CHARGES 49665082 an ey
+v amn
+risovans|uisorsionr ousces _ ssanansn w050 w500
+=y o o275 agesal7
+
+LLM RESPONSE:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Final Bill",
+  "line_items": [],
+  "total_amount": 0.0
+}
+
+PARSED DATA:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Final Bill",
+  "line_items": [],
+  "total_amount": 0.0
+}

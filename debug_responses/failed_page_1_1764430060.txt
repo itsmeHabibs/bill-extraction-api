@@ -1,0 +1,58 @@
+================================================================================
+DEBUG INFO - Page 1
+================================================================================
+
+OCR TEXT:
+--------------------------------------------------------------------------------
+P Provsonsh
+Frwatime e
+Suvetsgn et p—
+oo Ot A TS 3140
+e O D 412 231
+v e
+o -y,
+o, s
+wn oucnon LSS v osconr oo Y
+o rp— W wom ow _am tsam
+e
+ooctonwss ==
+iz PebATRGS- P oocToR VST wo mm w0 e
+Zams oncoATRGS. DoGTOR ST © mw  ww  om  sam
+s Aoy Camson W omm 0w o smw
+T
+ounces —
+S wsuCE PROCESSNGFEES W omem  om  ow
+i DY seAvES- W omm  om  om  mem
+s amssnon W oasmm  om  ow  2mm
+s TR PR ey o dmm  om  om  smm
+ez ones W wm  om  om  wom
+Ltz wowToRcianoes: Woww  om  om  eem
+e v s Wowm  om  om o
+pvezs o 0w om  om  mm
+e — 0 s o 0w e
+Vv o W ome e om e
+s o Wowe o o we
+s o o owm e o em
+e W mm  om  am Teem
+iR ———y W mem  om  am  smem
+s W okGEs mo mom  om  ow o
+s s W wom  ow o mow
+s e W owem e o  am
+P W mom  om  ow  wm
+——— Fmson suzs 152
+
+LLM RESPONSE:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}
+
+PARSED DATA:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}

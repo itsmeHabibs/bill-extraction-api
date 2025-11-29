@@ -1,0 +1,48 @@
+================================================================================
+DEBUG INFO - Page 1
+================================================================================
+
+OCR TEXT:
+--------------------------------------------------------------------------------
+Bill of Supply Inpatient Bl (Detailed)
+:—7 Ttom Nome. Dote Qu mt Umteice  Amoute)
+I L
+1 el s 10 oo w000
+RrandGanes &
+| Lo Susoon
+raen
+2l s 10 wew w0000
+AnaGeners
+| Lo Suseon
+(Eeusen
+3 o o savis 10 a0 25000
+o
+4 B s 10 wes 0000
+AdGeren
+Ui Suseon)
+et — =
+Sub oot T 76000 2000
+orugs.
+s poEnmanst BB 20k s e
+TR 00 (Bxch 4
+S/ oo
+5 monic Lo s 2o s e
+Bt oot
+oy
+e
+
+LLM RESPONSE:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}
+
+PARSED DATA:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}

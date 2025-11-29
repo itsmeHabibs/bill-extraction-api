@@ -1,0 +1,58 @@
+================================================================================
+DEBUG INFO - Page 1
+================================================================================
+
+OCR TEXT:
+--------------------------------------------------------------------------------
+P oL proviensy
+P e
+frmyonil savae serzs
+fomrey Ot 122034
+ey Ot Dt 201 231
+v sty
+o peea
+pm i o
+s omsemenon S o e omconr oot SSAANY
+v BB oREST-se W em  ow  w  ew
+T A OTLse W osem  ow  aw e
+T cacuu-sem W osem om0
+s Cop, CREACTVE PROTEN W owm w0 e
+VG ROUARANGTIONTESTEPT) W ommm ww  aw e
+s Koo curime MesenaTTY W omem  ow e eme
+T DvRcanE P (F10) W wem  ow e e
+ey B owem  om  aw
+AV COMPLETE 00D COUNTICRE) Wowm  om W me
+v o CapscTvE pROTEN Womm  om o  wo
+A R FORKOHMOUNT Womma  om  ow e
+s o capcrve moTen Womm ow e
+s PATEET o B0t0 W osew  ow  ow  em
+T occaraooo-sTooL Woma  ow  ow  mw
+vz CouPLET sooD couTcae) Wwowm  ow  sw  mw
+s o CREACTVE PROTEN W ommm om aw e
+o cop CREACTVE MOTEN W owm om  ow e
+Sovcas  RATELETCounT- 00D W oem  om  ow e
+S CowneTE mooocoues) Wowem  om o  sme
+s oo CREACTE PROTEN, Wowm  om  om  wmw
+o s
+ooy
+Xt wowm o ow e
+s xawcesan W omm oo o
+i RO CARGOSAAY W owem 0w om e
+s v W owem om o  me
+[ [ ———
+
+LLM RESPONSE:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Final Bill",
+  "line_items": [],
+  "total_amount": 0.0
+}
+
+PARSED DATA:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Final Bill",
+  "line_items": [],
+  "total_amount": 0.0
+}

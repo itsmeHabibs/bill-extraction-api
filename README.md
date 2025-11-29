@@ -98,7 +98,7 @@ sudo apt-get install tesseract-ocr
 ### Step 2: Clone Repository
 
 ```bash
-git clone https://github.com/YourGithubUsername/AshutoshSwain_YourCollege.git
+git clone https://github.com/itsmeHabibs/AshutoshSwain_YourCollege.git
 cd AshutoshSwain_YourCollege
 ```
 
@@ -419,7 +419,7 @@ Claude API requires paid subscription, making Grok a better choice for hackathon
 
 **Ashutosh Swain**  
 **College**: [Your College Name]  
-**GitHub**: https://github.com/YourUsername
+**GitHub**: https://github.com/itsmeHabibs
 
 ## 📄 License
 

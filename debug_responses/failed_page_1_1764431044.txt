@@ -1,0 +1,58 @@
+================================================================================
+DEBUG INFO - Page 1
+================================================================================
+
+OCR TEXT:
+--------------------------------------------------------------------------------
+1P BILL (Provisional)
+rtine e
+s orell el -
+iy ot | IO
+s ot Dt 22 1331
+e Sy
+ol . +*
+fsty st
+[ — o R R ————
+v ossosns svanE TR
+i psposams sy 0 3 wm om om  »m
+s weorwseo % me o e
+mas  ACSUBREPROMOD ULRosE o omm em amoma
+i OSNOMRE SNGE Ak i 2 aw  aw  om  uw
+iz DerosnE SmAGE D ow wm am e
+i e a0 curED) Womn s om e
+A Eovmanovcovs wepu we wm  m  om  wew
+W W FEEONGTURG S % aw o  om o
+ittt Wowm om om %
+iR e — Bowm  om om  mw
+U eowsenrmezoiows 1 o we  am  am  me
+e sucnovcmeTERs B me  w am we
+e swoca ez Wote o om s
+i e waystop ook Bome om  om  me
+i noEmo Wowe  om  om e
+it — B e o om mm
+v vEoUNE wou Boswn ow  om
+s ACCUSIREPROB00D uucose w oawm e om  me
+s oo W omm o 0w mm
+T DsmosKRE sYNGE 1k W oww e aw  wm
+s JECMALYENTUATOnCReuT( woamm o om emo
+s DaroRAE sy w woosw em  ew e
+Wiiios  CaroSsME veGE s Wowa om  em  wm
+T ooano coves DR 2 owm em  am  an
+s ACSUBURE PROBLOOD LLcoSE » oww s am s
+v [T ——
+
+LLM RESPONSE:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Final Bill",
+  "line_items": [],
+  "total_amount": 0.0
+}
+
+PARSED DATA:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Final Bill",
+  "line_items": [],
+  "total_amount": 0.0
+}

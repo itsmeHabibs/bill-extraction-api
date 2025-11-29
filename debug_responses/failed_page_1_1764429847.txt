@@ -1,0 +1,55 @@
+================================================================================
+DEBUG INFO - Page 1
+================================================================================
+
+OCR TEXT:
+--------------------------------------------------------------------------------
+\
+e o S \
+! |
+FnaL B
+T —Tr—rrr
+o . oo
+e s
+s sy
+| oeSpeciatny B Mobile No.
+P -
+[ Ve
+»
+[reg— T ———
+e
+N W woms vaw 1w |
+Consu e
+i - o wowms v 7 sem
+B opmiad s wes s wow ¢ e
+1 e wos woms w1 e
+i i wos o e 1 om
+v ovmweey wows w1 el |
+&t radoon
+. monmgicany P
+o omnoeecommone  mwws woms o 1
+3 et w1
+o Hesic 2onas znoas 000 1 2000
+N e s e mm
+i+ e ey s s  saim
+1 ELECTRO CARDIOGAAM (ECG) s 2oz w1 ey
+e e i—
+W e P
+. o w1 e
+1 = o s w1
+
+LLM RESPONSE:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}
+
+PARSED DATA:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}

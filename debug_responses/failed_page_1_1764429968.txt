@@ -1,0 +1,77 @@
+================================================================================
+DEBUG INFO - Page 1
+================================================================================
+
+OCR TEXT:
+--------------------------------------------------------------------------------
+0 5l () e
+o wowe + romovms 1506
+e o Do, :
+o ome oGt
+[iretsirie Mo Tne ¢ Tooviizs 231
+s Dscupevss  sevovais 112
+[ Ho-otowr.
+e Foami. :
+e+ RomGory ¢
+pring ey e,
+ey serwnomapin s
+e (AR v i v a0
+ot (Koo O ook il e peor]
+e e et il e e
+it [comann GG il e St
+[ e e i Tt
+owasToamve i unces
+I T g B i o
+)
+(e rees
+s (SUETEAES, sn rcacom I )
+| i s o e o i ey
+sioon e cuaces
+v (REPEMETES smsca o s s
+i o T, 20000
+s (oo e R i we 20
+o T T 2sm00
+s [oscoomwomess  sisyoncasn il a 2smetn
+e o T T 2000
+o S aaces
+s (TENERES ouononse i e o
+T someseinn oo amor
+s crSimems SasRn a| o o
+oty naom
+resnc o
+e [ ) I o0
+Bt S S o) H -] g
+oressive covsweie Gusces
+s (RS I 1m0
+0 (e vt s H - =]
+evescency quncen (crmwo
+vous (SRS I o0
+R |y owees Gy H -1 e
+o oo cwes
+v [PRSIALEE™ ssoumsosn i| s s
+raroni Giam 1 wm
+Soctmcise w1 me
+freiciesehy o R
+e I 1)
+B .~ R R
+ety Booe 1w
+o wos 1 B
+Nowosvenows s 1 e
+Ve ron b
+iteesd T 1 um
+
+LLM RESPONSE:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}
+
+PARSED DATA:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}

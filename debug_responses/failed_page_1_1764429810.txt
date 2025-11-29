@@ -1,0 +1,38 @@
+================================================================================
+DEBUG INFO - Page 1
+================================================================================
+
+OCR TEXT:
+--------------------------------------------------------------------------------
+BUFGHSiphly Tnpatient BiiSamimary)
+company state
+O T
+T
+2 s 170293
+N Inesgatons 30000
+B [resp— s
+. oo et 400000
+o suvey w00
+T Gemtem: - awes
+beposi 6000
+oacount 05700
+B
+Company Creat it masao0
+Nt Amoun rfunded o patiet : 995
+et Amourk Paid by Company © masa00
+
+LLM RESPONSE:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}
+
+PARSED DATA:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}

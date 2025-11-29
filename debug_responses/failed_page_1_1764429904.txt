@@ -1,0 +1,41 @@
+================================================================================
+DEBUG INFO - Page 1
+================================================================================
+
+OCR TEXT:
+--------------------------------------------------------------------------------
+s SR
+Okl | {£<ED] ]
+'~ ek 590 |6 ciper frmasmg o3| 200 | |
+Y= Tuma-sp | | |
+¢ 2 [ s Ee FET
+$ | ‘ |
+| | |
+[ ’
+e [ Total| 210 s
+e
+CASHBILL — 1
+7251 « pate Mo 110124
+PtName Dr Name-. . T v'
+~ PARTICULARS Sch [Nae of W | Batch No. [Exp.ut| s 7%
+i! Tahwa 2oy (W Bk [tausaglaleal 129 |¢
+! oMal-—EE0 (9 G [ \og| 229 ¢
+=3 ¢
+ST D'xm-«l' P ua. |-
+S e % _S\gnaluve
+
+LLM RESPONSE:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}
+
+PARSED DATA:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}

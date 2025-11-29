@@ -1,0 +1,43 @@
+================================================================================
+DEBUG INFO - Page 1
+================================================================================
+
+OCR TEXT:
+--------------------------------------------------------------------------------
+rmiu.mxngm e — g
+é i {
+9
+. [senod . : . pate. 030 FHR
+y | Patient Name...... . .
+N [ =
+¥ State Codes ] GSTINUNG -« s e
+ORIEE N s e
+Batch Number] _ Amount
+B T e
+> [t ,_\..5]... s (=] |—§
+2 ;
+1 ( elddadty o= | oo |}
+3
+¢ 1Y olhean | a2 | 2
+-
+[Amount In Words: o 0 WolGescll... AN.....|
+Z O onco s il b bk For-~
+st G i b S0 e 4
+% £ g s nther o . s e
+1 2
+
+LLM RESPONSE:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}
+
+PARSED DATA:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}

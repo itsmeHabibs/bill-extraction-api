@@ -1,0 +1,57 @@
+================================================================================
+DEBUG INFO - Page 1
+================================================================================
+
+OCR TEXT:
+--------------------------------------------------------------------------------
+Fuece e
+fontonll e sormas
+Pet e Do i T
+. O D © 0128 1291
+o Sy
+post atpe
+P ; by
+o cescwmon S oy omcomr oot MY
+Joussoncuunces
+- W mm ow  ow  mw
+e me
+- ———
+s weu woom 0w om amw
+G e o awem  om  ow  awew
+g W oamm 0w ow cmm
+s weu 0 oamom 0w ow  amow
+s e W oamom  om  om  amom
+wams e 0 oamem  om o amem
+s weu W awem  om o amom
+s e o awem  om  ow  amem
+s e 0 isem  om  om  4som
+s e W odew  ow om amo
+Tmas o o mm om  om 4sam
+s proarewa W s om  om  saem
+e 0 osame o om smm
+s mwrews 0 same  om  ow  smem
+R
+wnsnG cuances
+M MRS CHRGES N W ome  wm  om tamm
+lomates  mano CiARGES o tmm  om  ow  1mm
+i uRsnO CIARGES cy o imem  om  ow iz
+Lnats RSN CHARGES cU o imem  om  ow  ixom
+ST RSN CARGES -NEU o me o  om imm
+Wniion wuRshachunces o imew  om  ow  imem
+st [
+
+LLM RESPONSE:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Final Bill",
+  "line_items": [],
+  "total_amount": 0.0
+}
+
+PARSED DATA:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Final Bill",
+  "line_items": [],
+  "total_amount": 0.0
+}

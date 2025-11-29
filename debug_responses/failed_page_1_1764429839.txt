@@ -1,0 +1,44 @@
+================================================================================
+DEBUG INFO - Page 1
+================================================================================
+
+OCR TEXT:
+--------------------------------------------------------------------------------
+: .
+: g o
+. e R
+So. roduct name - W e m mw oy A
+3 S e ooty - o ey L e
+TuagcHion 31 e g
+u: . (R LR sweszors - vz e e 1 ane
+Twenion o o
+s e om o sosen - mmee wm sas 1 s
+© s m sonsess - waoua ez ma 3 e
+5 o usems  owem - e S
+¢ o tom soieaes - moiwios o6/ das 3 e
+7@ o e - smues ose s 4 e
+o o sazon waot womu g P S
+s emaws towm e - o B wae e 1 o
+1o ow sn o6 : ) cseess  oa w1 s
+T T B
+sun: 200600 T e w0 o ¥1,842.00
+2004 .
+B i Hords: One Shousand, Eight Handred And Forty e Guly
+Frepared by, Fhsceacy Specim Printed Date. 61/, oas 130550
+et vt soont
+
+LLM RESPONSE:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}
+
+PARSED DATA:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}

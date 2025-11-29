@@ -1,0 +1,43 @@
+================================================================================
+DEBUG INFO - Page 1
+================================================================================
+
+OCR TEXT:
+--------------------------------------------------------------------------------
+e L BN WIZORETE
+[Crowoseous 7 o]
+220878300
+ther nformation
+Borsuppy T WTZ00S 2207500
+Tox ivoice T 0%
+Totl Payable Amaunt 220076300
+uthorzation Amount 0%
+_ ]
+Deposi D(Gas 00 Non Cosn o) %
+Toray 7500
+Tobe Retond 0%
+et Pavab PRI
+Poyment ot
+TR ———
+No To s Payableon Reverse charge Bsis
+custanding Amount Smaranm
+s Lasnorntsnager
+S T
+TR Bl st ey o gl s sl oo f e 1d s 4 e f Ao
+Disciamer: Al h sbovedates ndcatod 3 Do & T of o oty oy Page 2010
+
+LLM RESPONSE:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Final Bill",
+  "line_items": [],
+  "total_amount": 0.0
+}
+
+PARSED DATA:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Final Bill",
+  "line_items": [],
+  "total_amount": 0.0
+}

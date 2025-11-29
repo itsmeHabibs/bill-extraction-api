@@ -1,7 +1,11 @@
 """
 Extraction Prompts for Bill Data Extraction
 Contains carefully crafted prompts with guard rails
+Optimized for GPT-OSS model
 """
+
+
+import json
 
 
 class ExtractionPrompts:
@@ -17,66 +21,34 @@ class ExtractionPrompts:
         Returns:
             System prompt string with instructions and constraints
         """
-        return """You are an expert bill/invoice data extraction AI. Your task is to extract line item details from bill text with extreme accuracy.
+        return """You are a specialized bill data extraction system. Extract line items from bills/invoices with precision.
 
-**CRITICAL RULES - MUST FOLLOW:**
+CRITICAL RULES:
+1. Extract ONLY items with monetary values (products/services with prices)
+2. DO NOT extract: dates, invoice numbers, patient IDs, reference codes, subtotals, or grand totals
+3. Each line item MUST have: name, amount, rate, and quantity
+4. Return ONLY valid JSON - no explanations, no markdown, no extra text
 
-1. **Identify ONLY Monetary Line Items:**
-   - Extract only items that have a price/amount associated with them
-   - DO NOT extract dates, invoice numbers, patient IDs, or reference numbers as line items
-   - DO NOT extract subtotals or grand totals as individual line items
-
-2. **Required Fields for Each Line Item:**
-   - item_name: The exact name/description of the product or service
-   - item_amount: The NET amount (final price after any discounts)
-   - item_rate: The price per unit
-   - item_quantity: The number of units
-
-3. **Currency Values Only:**
-   - item_amount, item_rate must represent money (₹, $, etc.)
-   - If a number represents date, ID, or reference - DO NOT include it
-
-4. **Page Type Classification:**
-   - Identify if page is "Bill Detail", "Final Bill", or "Pharmacy"
-
-5. **Output Format:**
-   - Return ONLY valid JSON
-   - No markdown, no explanations, no preamble
-   - Use the exact structure specified
-
-**Example of CORRECT extraction:**
-```json
+OUTPUT FORMAT (MANDATORY):
 {
-  "page_type": "Pharmacy",
+  "page_type": "Bill Detail" OR "Final Bill" OR "Pharmacy",
   "line_items": [
     {
-      "item_name": "Paracetamol 500mg",
-      "item_amount": 120.50,
-      "item_rate": 12.05,
-      "item_quantity": 10.0
+      "item_name": "product/service name",
+      "item_amount": numeric_value,
+      "item_rate": numeric_value,
+      "item_quantity": numeric_value
     }
   ],
-  "total_amount": 120.50
+  "total_amount": sum_of_all_amounts
 }
-```
 
-**Example of INCORRECT - DO NOT DO THIS:**
-```json
+If no line items found, return:
 {
-  "line_items": [
-    {
-      "item_name": "Invoice Date",
-      "item_amount": 20251129  // WRONG - This is a date!
-    },
-    {
-      "item_name": "Patient ID",
-      "item_amount": 12345  // WRONG - This is an ID!
-    }
-  ]
-}
-```
-
-Remember: Only extract actual purchasable items with prices. Dates, IDs, and reference numbers are NOT line items."""
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}"""
 
     @staticmethod
     def get_user_prompt(ocr_text: str) -> str:
@@ -89,32 +61,23 @@ Remember: Only extract actual purchasable items with prices. Dates, IDs, and ref
         Returns:
             User prompt string
         """
-        return f"""Extract all line items from this bill text. Follow the rules strictly.
+        # Truncate OCR text if too long to avoid token limits
+        max_ocr_length = 3000
+        if len(ocr_text) > max_ocr_length:
+            ocr_text = ocr_text[:max_ocr_length] + "... (truncated)"
+            
+        return f"""Extract line items from this bill. Return ONLY JSON.
 
-**Bill Text:**
+BILL TEXT:
 {ocr_text}
 
-**Instructions:**
-1. Find all items that have a name, quantity, rate, and amount
-2. Ignore any dates, invoice numbers, patient IDs, reference numbers
-3. Calculate total_amount as sum of all item_amounts
-4. Return ONLY the JSON structure, no extra text
+INSTRUCTIONS:
+- Find items with name, quantity, rate, and amount
+- Ignore dates, IDs, reference numbers
+- Return ONLY the JSON structure shown in system prompt
+- If no items found, return empty line_items array
 
-**Required JSON Structure:**
-{{
-  "page_type": "Bill Detail" or "Final Bill" or "Pharmacy",
-  "line_items": [
-    {{
-      "item_name": "exact name from bill",
-      "item_amount": numeric_value,
-      "item_rate": numeric_value,
-      "item_quantity": numeric_value
-    }}
-  ],
-  "total_amount": sum_of_all_item_amounts
-}}
-
-Extract now:"""
+JSON OUTPUT:"""
 
     @staticmethod
     def get_validation_prompt(extracted_items: list, ocr_text: str) -> str:
@@ -128,23 +91,58 @@ Extract now:"""
         Returns:
             Validation prompt string
         """
-        return f"""Review this extraction and verify it's correct.
+        return f"""Review this extraction and verify accuracy.
 
-**Original Bill Text:**
-{ocr_text}
+ORIGINAL BILL:
+{ocr_text[:1000]}
 
-**Extracted Items:**
-{extracted_items}
+EXTRACTED ITEMS:
+{json.dumps(extracted_items, indent=2)}
 
-**Validation Questions:**
+VALIDATE:
 1. Are all actual line items captured?
-2. Are there any dates, IDs, or non-monetary values incorrectly included?
-3. Do the amounts match the bill?
-4. Is anything double-counted?
+2. Any dates/IDs incorrectly included?
+3. Do amounts match the bill?
+4. Any duplicates?
 
-Respond with:
+Return JSON:
 {{
   "is_valid": true/false,
-  "issues": ["list of any issues found"],
+  "issues": ["list issues"],
   "corrected_items": [corrected list if needed]
 }}"""
+    
+    @staticmethod
+    def get_retry_prompt(ocr_text: str, previous_response: str) -> str:
+        """
+        Get retry prompt when first extraction fails
+        
+        Args:
+            ocr_text: Original OCR text
+            previous_response: Previous failed response
+            
+        Returns:
+            Retry prompt string
+        """
+        return f"""The previous extraction failed. Try again with this bill.
+
+BILL TEXT:
+{ocr_text[:2000]}
+
+PREVIOUS FAILED RESPONSE:
+{previous_response[:500]}
+
+REQUIREMENTS:
+- You MUST return valid JSON
+- Use this exact structure:
+{{
+  "page_type": "Bill Detail",
+  "line_items": [
+    {{"item_name": "name", "item_amount": 0.0, "item_rate": 0.0, "item_quantity": 0.0}}
+  ],
+  "total_amount": 0.0
+}}
+- If no items found, return empty line_items array
+- NO markdown, NO explanations, ONLY JSON
+
+JSON OUTPUT:"""

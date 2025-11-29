@@ -1,0 +1,34 @@
+================================================================================
+DEBUG INFO - Page 1
+================================================================================
+
+OCR TEXT:
+--------------------------------------------------------------------------------
+»
+: T 18 TAX INVOICE |
+. PHARMA Nol' ) CASHBILL Date.,. , . |
+- = — D
+’ B ) Pl e s OO
+o il B |l Rasi ps|
+|| LodiNede - MF Qoo | /[5SS2[ 06 &g b0
+162
+ad ALEN~ Revlan . —_ 2"\FH’X\0\[7_:\ 246 .y
+ekl l
+Prices are all inclusive of Taxes
+over charging by over sight are refundable on production of this bill 2
+
+LLM RESPONSE:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}
+
+PARSED DATA:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}

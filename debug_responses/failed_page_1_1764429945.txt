@@ -1,0 +1,62 @@
+================================================================================
+DEBUG INFO - Page 1
+================================================================================
+
+OCR TEXT:
+--------------------------------------------------------------------------------
+[Ee— e ;
+i e Badue [
+Mo ounamsons Spomor
+Dy Do Py oy
+CommtigDoctr ninisinRo
+[T, @ om
+[o——
+BOLYVOL PO SIML(REF-H56) 0311200 51 . e
+roLyvoL [r——— 0 e
+NIRACATIN 2000LMED g, : o WH
+AT [rp—— 20 s
+VENOLINES I0CM EXTROMSON 451 s st s o M s
+TUBBRCUUNSYRIGHATI0. g1z sison: My o P e
+OISO SYRNGE S WiToUT . 00
+Darostm [ —— o0 5100
+SVRIGEWONEEDLE ML 01,20 ,, ot
+sty [ — 20 0w
+SYRIGEWONEDSINLLLGD) o112 soos et o Yy
+SURGIONCAPDIUX(SUCT 08112 ssasor tax o we
+PACEMASK STHRILE RIGAL- s - o
+e - 20 s
+STERILE GLOVES 65 SURGICARE) 04112025 250087 im0 o HE
+st [ o mn
+STERILEGLOVES T SURGICARD, g1 2 s o mo TPy
+EAMNATION TLE GLOVES P
+FENGUNIROMEDUN FONDER 0311225 sos 1o 1nox e
+T
+URINEBAG PARD XKONSON) UPAE 03113025 G2SF11OS 30 o w s
+SCTONCTETIOAIN  gupsuss o o T ae
+BLOODLANCITSEASY CARE LA 0811302532501 Sep29 o um um
+FRUENDS UNDLRPAD CARE yisiomons e
+s [I—— ™ oo
+TEDDY AR DIAPERNEWBORY g, 2
+bt osnvas ixo .
+[ e——— " o 160
+AT [T — ™ 0o
+VENOLINES 100CM EXTRONSON o120 ks e Mo TR g
+TUBBRCULNSYRIGHS2TED. gquizms sison: a0 mo M0
+P
+e
+
+LLM RESPONSE:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}
+
+PARSED DATA:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}

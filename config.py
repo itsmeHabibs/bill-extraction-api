@@ -16,12 +16,8 @@ class Config:
     Loads all settings from environment variables
     """
     
-    # ========== Grok API Configuration ==========
-    GROK_API_KEY = os.getenv("GROK_API_KEY")
-    GROK_API_BASE_URL = os.getenv("GROK_API_BASE_URL", "https://api.cometapi.com/v1")
-    GROK_MODEL = os.getenv("GROK_MODEL", "grok-beta")
-    MAX_TOKENS = int(os.getenv("MAX_TOKENS", "4000"))
-    TEMPERATURE = float(os.getenv("TEMPERATURE", "0.1"))
+    # ========== Groq API Configuration ==========
+    GROQ_API_KEY = os.getenv("GROQ_API_KEY")
     
     # ========== Flask Configuration ==========
     FLASK_ENV = os.getenv("FLASK_ENV", "development")
@@ -58,16 +54,17 @@ class Config:
         Raises:
             ValueError: If required config is missing
         """
-        if not Config.GROK_API_KEY:
+        if not Config.GROQ_API_KEY:
             raise ValueError(
-                "❌ GROK_API_KEY environment variable not set. "
-                "Please add it to .env file or set it as environment variable."
+                "❌ GROQ_API_KEY environment variable not set. "
+                "Please add it to .env file or set it as environment variable. "
+                "Get free API key from: https://console.groq.com/keys"
             )
         
-        if not Config.GROK_API_KEY.startswith("sk-"):
+        if not Config.GROQ_API_KEY.startswith("gsk_"):
             raise ValueError(
-                "⚠️  GROK_API_KEY format seems invalid. "
-                "It should start with 'sk-'"
+                "⚠️  GROQ_API_KEY format seems invalid. "
+                "It should start with 'gsk_'. Get your key from https://console.groq.com/keys"
             )
         
         return True
@@ -86,12 +83,8 @@ class Config:
             "port": Config.PORT,
             "flask_env": Config.FLASK_ENV,
             "ocr_service": Config.OCR_SERVICE,
-            "grok_model": Config.GROK_MODEL,
-            "grok_base_url": Config.GROK_API_BASE_URL,
-            "max_tokens": Config.MAX_TOKENS,
-            "temperature": Config.TEMPERATURE,
             "log_level": Config.LOG_LEVEL,
-            "api_key_set": bool(Config.GROK_API_KEY),
+            "api_key_set": bool(Config.GROQ_API_KEY),
         }
 
 
@@ -158,7 +151,10 @@ if __name__ == "__main__":
         print("-" * 50)
         summary = Config.get_config_summary()
         for key, value in summary.items():
-            print(f"  {key:20s}: {value}")
+            if key == "api_key_set" and value:
+                print(f"  {key:20s}: ✅ Set")
+            else:
+                print(f"  {key:20s}: {value}")
         print("-" * 50)
     except ValueError as e:
         print(f"❌ {e}")

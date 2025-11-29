@@ -1,0 +1,59 @@
+================================================================================
+DEBUG INFO - Page 1
+================================================================================
+
+OCR TEXT:
+--------------------------------------------------------------------------------
+prTr—
+fo— sare
+Pomt b Sa0ue o
+ooy Oue b | RSO A
+i O O | 4 2P
+o Sy
+o ronsd
+i awive
+[ . R —
+o W ww  om  om mw
+e oy seaces e o me o om  sem
+ez o 0w ww  om  ma
+s wowToncuaRces. Womw o o e
+e owaensERON o oemw o 0w 2o
+v svince e W wm  om o e
+s o 0 e ow o ma
+s s Wowm  om  om  vom
+v oy semvces. ey Wowmm  om  om  wew
+s orss o e o am  mw
+wna vontoRcwaes Woew  ow om oo
+s oroenFeR 0N 0 swem  om  om e
+itz v o o om  om s
+e oas W oo om  om  vem
+s omse W owm  om  om  wom
+e 3o o om  me
+v TR okGES W owma  w  om  eew
+vz ovGENPERDAY Woeme  om  w nem
+ez sace e woww  w  om e
+v —— W ma e om s
+s onss W o e om  mew
+s oms W ovem  om  am  nw
+v axvaenreRvom Wome e am
+Sovans  onas % mw a0 om e
+o wowroRcHwes. Wowem  om om  wow
+Tonas  svnce e Womm  om  om  som
+o oERsseRvces-wcy Womm  om om  sow
+et 21 Prmcon aems s
+
+LLM RESPONSE:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}
+
+PARSED DATA:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}

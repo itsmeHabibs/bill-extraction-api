@@ -1,0 +1,48 @@
+================================================================================
+DEBUG INFO - Page 1
+================================================================================
+
+OCR TEXT:
+--------------------------------------------------------------------------------
+e p————
+i s
+b b
+_w e S mﬂmu
+1 OR KRS AEPHROLOGISTFES RS 175 6 wovom a0 oo
+b RN KN CORSULTATION S 20112025 725 5 roo0en w000 tsonce
+k Mo g et ons NR21725 S 000 o0 sy
+Spp— prpe——
+" Pus coe s sy e oss 1 0o o o0
+3 Camow Bocs G oo 1 o tose wasoon
+et i T T oz 06 1 w0000 o s
+e G ASTERAL BLOOD GAS AUALYSS) 10112008 501 1 wrioosn s wricone
+k Prakionn b1 [ w00 0o e
+ELEGTROYTES gt K8 1) [r—— ti0s0 00 tso00s
+b Choscns Pt 39 sz 1 w7000 00 s
+B LYCOSATED eMOGLOSN) 20 zeES 07 1 w00 toso oo
+e O Sovonty-Aoove vaeesoran 1 w0 o 0]
+o ABG ARTERAL BLOOD GAS MALYS) 201120250729 1 e Y oo
+I o o T ) ameosoras w000 e oo
+i [ oo 1 nsom o wsone
+o 000 Govary v Tyorg WBO sy NR0RE 110 1 w00 0o eisoa
+e Corpw Boed smmzsor 1 o w000 wsoon
+s PersFuncton Toa 36T o 1 o000 o w00
+e sweansmor anaasors 1 wooon o0 woos
+e s i ) amasorss 1 o o wsrom
+o wcaqo.- sern o pees oo to0ne
+
+LLM RESPONSE:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}
+
+PARSED DATA:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}

@@ -1,0 +1,260 @@
+[
+  {
+    "document": "train_sample_1_page-0001",
+    "status": "success",
+    "items": 4,
+    "tokens": 1943,
+    "time": 8.693379163742065
+  },
+  {
+    "document": "train_sample_1_page-0002",
+    "status": "success",
+    "items": 2,
+    "tokens": 2850,
+    "time": 8.535760879516602
+  },
+  {
+    "document": "train_sample_2_page-0001",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_2_page-0002",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_2_page-0003",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_3_page-0001",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_4_page-0001",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_4_page-0002",
+    "status": "success",
+    "items": 1,
+    "tokens": 1441,
+    "time": 3.845822811126709
+  },
+  {
+    "document": "train_sample_5_page-0001",
+    "status": "success",
+    "items": 3,
+    "tokens": 1780,
+    "time": 2.900923728942871
+  },
+  {
+    "document": "train_sample_5_page-0002",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_5_page-0003",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_6_page-0001",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_6_page-0002",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_6_page-0003",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_7_page-0001",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_8_page-0001",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_9_page-0001",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_9_page-0002",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_9_page-0003",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_10_page-0001",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_10_page-0002",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_10_page-0003",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_11_page-0001",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_12_page-0001",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_12_page-0002",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_12_page-0003",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_12_page-0004",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_12_page-0005",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_12_page-0006",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_13_page-0001",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_13_page-0002",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_13_page-0003",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_13_page-0004",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_13_page-0005",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_14_page-0001",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_14_page-0002",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_14_page-0003",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_14_page-0004",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_14_page-0005",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_14_page-0006",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_15_page-0001",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_15_page-0002",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_15_page-0003",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_15_page-0004",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_15_page-0005",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_15_page-0006",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_15_page-0007",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_15_page-0008",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_15_page-0009",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_15_page-0010",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  }
+]

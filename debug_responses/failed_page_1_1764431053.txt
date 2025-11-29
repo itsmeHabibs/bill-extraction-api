@@ -1,0 +1,59 @@
+================================================================================
+DEBUG INFO - Page 1
+================================================================================
+
+OCR TEXT:
+--------------------------------------------------------------------------------
+prTre—
+- s
+el Do s
+sy Ot T 4
+ey ot D 211265 1231
+By sy
+ot e
+e Joorsy
+o cescumnon R R ———— "
+T mocouseer 2 mm m e aw
+s DaosARE SvnGE Tk Woaw e ow  nw
+e oswoskss svice w0 Wowm oo
+T DaATON GLOVES MEDAM 2 um e o ae
+s eonPASTE) Woam e o s
+s DaRORARE SANGE YL 1 © o un am  wm  an
+s o Loves ueDwAl 2 we  aw  m  mm
+i NANTPEEONG TURE S S W oo e o mw
+e TeMEPVERCHOD Wowe e wm  mw
+v DSk Sy sk D W omm e am mw
+s PO e Giows s Boma e aw  ma
+v siooooweer 2 mm am  om s
+s ACCUBREZROBL000 Gucose wowm e aw am
+s DRoME SYRNGE W e e e
+i DSOSk SYRNGE S HID 2w em  om  ma
+iams psmanoN GLOVES NEDUA B um  m  om  mw
+e wavweeszs omm o oo ww
+s oomose W wn  ww  om  wn
+T e won s wowm e am  mm
+T s o B onw e am
+v PR A, wowm e aw  mm
+vz 0w s oupe 53w som) oomm e e
+i wareR FoR s s Woem e om
+s Trowes o Womn  ew  om  wmn
+v vezouu s wome e e ma
+s ko W oum  ww  m wa
+g w o owe o e wm
+Poan Powson s
+
+LLM RESPONSE:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}
+
+PARSED DATA:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}

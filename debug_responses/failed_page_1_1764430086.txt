@@ -1,0 +1,55 @@
+================================================================================
+DEBUG INFO - Page 1
+================================================================================
+
+OCR TEXT:
+--------------------------------------------------------------------------------
+[rrs—
+P s
+iyl B0 -
+P Ot | WG 4
+™ O O 201228129 P
+ua Sty
+o by
+s prer
+o omscnenon L oy e ccounr Ao SSUTMNY
+r——— W mm  om  om  me
+i svmce o oww  om  om  wom
+s o W e ew  aw  mam
+s esusaron w0 wm  ww  om  vam
+s oGNP Woem  om e
+s AL AsSESSVENTCHARGES W omw  w  om  som
+s e coaRoes W wmm om oo mw
+A Vet o e ow 0w mm
+Gt ows W wem  ow oo mam
+s s 2w oww  ww om  vew
+s o Wowem om o oaw mm
+s eswsnon Wome o om  wem
+s DEseRvcEs ey e
+s o o e w0 o sem
+T emasnon W omw  ww  om  emm
+vz voToncsces. Wowem  om  om ke
+Gavas oveePERDRY om0 om 2em
+e vcenae o om  om  wm
+s o B tem  om  om  vew
+vz esson W s om  om  wm
+e ores Wowm  om  om  vom
+s oans Wowm  om  om  wom
+s o Wowm  om  om  vom
+s emeon 2w om  om  xmw
+NG o Vrtin ) W amm o om  axom
+iz neswaaron w wm  om  om v
+Ui wouTon o, o om  om  mm
+e pmton. s sz
+
+LLM RESPONSE:
+--------------------------------------------------------------------------------
+{"page_type":"Bill Detail","line_items":[],"total_amount":0.0}
+
+PARSED DATA:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}

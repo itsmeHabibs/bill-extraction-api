@@ -1,0 +1,58 @@
+================================================================================
+DEBUG INFO - Page 1
+================================================================================
+
+OCR TEXT:
+--------------------------------------------------------------------------------
+B Provisons
+P s
+jomusjoreil Sa0un suvas
+jomary vt | A
+oGt | Ot 2 12314
+o Sy
+e homd
+. e
+- LS v cacomn  awonr ST
+Prr—— W wem  ow  aw  mw
+Do s 2 mw  aw  om  mw
+T vowroncrces W oww 0w o wow
+T crrcenreRow W0 oaem oo w20
+s ones 2w om  om e
+Gz oes 2 oww o om  mm
+s vemsanon 0 me  ww 0w wme
+s oy stavces ey W owmm om0 o
+s oes 2 e o om
+G ey servees. e WD Wowm  ow  aw
+Zants o ot snree ) B omm om0 s
+SR AR CONSUUABLES PR ONY 0 me  ww  ow  wmw
+T oms Wome  ow  ow  mew
+s s Wowem  om oo wow
+e 2 mw  ow  om  mw
+S oemy sevees aATE WD Wowm  om  ow  owm
+s omes Wowem  om s
+s Owonai S 0 owewm om0 tamm
+s oms W owem  om e e
+ity 2w m  om  mw
+it S —— Wowm  om oo
+S onas W ovem  om o wom
+S counon W oisem  om  ow  taw
+ow e
+o consouseiss =
+Sz mocoueer B ™
+e Poion stz
+
+LLM RESPONSE:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}
+
+PARSED DATA:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}

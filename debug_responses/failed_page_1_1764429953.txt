@@ -1,0 +1,63 @@
+================================================================================
+DEBUG INFO - Page 1
+================================================================================
+
+OCR TEXT:
+--------------------------------------------------------------------------------
+[Ee— e ;
+i e - Badue s
+Namisionie wivmson S
+Doy Do Py oy
+CommtigDoctr et
+[T @ G
+[or—
+DISROSYINGE L WiTUT s R
+Disrosvmn 1208 200WEDI N0 sx0 s02s
+SIRNGEWONEEDLEMMLLL iy o2 e o W
+v
+NEEDLENO2E I DISTOVAN ON2)  ID1IAIS SN g0 mo amam
+AT DI U . 0 W
+IEANT FREDING s SO ™ P
+FACEMASK STRILE REGAL- il 2 o
+racews s sasion sep3n 0 o
+TEGADERN 1630 TR 10113 Rz ey o e e
+T o W
+sy
+STERLEGLOVES GURGICARD) 101 2p a0k o o M
+BXATIoN L oLoves e
+FENGUNIROMEDIUNFONDER  to112sNows 10 1nox 2
+o
+MIROPORESURGICALTAPE" 101123 ks o o R
+e —— . o0
+roLyvoL [IeppT— ™ w00
+URINEBAG CARDXKONSON UPAE 10112028 G2F11O0S) 30 w0 e e
+DUODERMTH ICIORATCHEXTRA 101 20z somin e o aag
+SUCTONCATIETERNOXCTO  jyuizss s o o W oy
+BLOODLANCETSEASY CARE BLAN 1011228362801 Sep29 mo a2 um
+FRENDS UNDER PAD CARE s s o T
+s [IeT—— ™ s
+T T —— o me e
+STERLEGLOVESTSURGICARD) 11120z 35101520K o0 o W
+e — i s
+AT [T e— 0 s
+WmACATINO oL, . 0
+AT [T — ™ 0o
+VENOUNESUEMBONSON) 1112 kascoroms o o e
+o
+R0 s teie
+
+LLM RESPONSE:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}
+
+PARSED DATA:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}

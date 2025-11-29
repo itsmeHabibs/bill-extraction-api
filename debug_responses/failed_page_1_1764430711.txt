@@ -1,0 +1,47 @@
+================================================================================
+DEBUG INFO - Page 1
+================================================================================
+
+OCR TEXT:
+--------------------------------------------------------------------------------
+9
+: e
+e — .
+— e
+-~ ot
+eseadiih s
+o e
+% asmearmie s am nm
+P — s mees ww e
+o wos o e 1 sam
+A CVRON. s mews we 1 e
+B s ) o wows s s
+u sowesan e w)  wos awam e +
+e —— s w1
+S e W wones e 1 mam
+o astian s W ww | e
+S o mums ww
+e e
+P i i,
+il mos o 1
+w e st o G
+5 o v wns 1 ol
+e o w1
+. s wows o o ol
+@ crss ‘mnmzs 20102025 15000 1 1500
+
+LLM RESPONSE:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Final Bill",
+  "line_items": [],
+  "total_amount": 0.0
+}
+
+PARSED DATA:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Final Bill",
+  "line_items": [],
+  "total_amount": 0.0
+}

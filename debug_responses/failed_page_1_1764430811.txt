@@ -1,0 +1,66 @@
+================================================================================
+DEBUG INFO - Page 1
+================================================================================
+
+OCR TEXT:
+--------------------------------------------------------------------------------
+Pac Regn No e
+Pt Name D wnaozs
+Adnision Dt s Sponsar
+Discaye Dt Py Cacaory
+Consing Doctor AdnisionNo
+Onter . o Ges  Na
+SYRINGE INFUSION PUNIP IS ANe 1000 1240
+ADVANCED VENTILATION (BEAR 750)- HFO GIas N 0000 276000
+SINGLE CHANNEL MONITOR (NICU) Wiz e a0 smm
+SYRINGEINFUSION PUNP Was N 000 00
+ADVANCED VENTILATION (BEAR 75)- HFO Wz N 30000 27600
+ADVANCED VENTILATION (BEAR 750)- FO BIas 1N 0000 276000
+SINGLE CHANNEL MONITOR (NICU) oz e 0 mmw
+SYRINGE INFUSION PUMP s AN Lo 12
+ADVANCED VENTILATION (BEAR T50)- 70 onas e 00w 270000
+ADVANCED VENTILATION (HEAR 750)- HFO nmas e 0w 276000
+SYRINGE INFUSION PUNP wnas AN L300 1240
+SINGLE CHANNEL MONITOR (NICU) wias e dsm 200
+ADVANCED VENTILATION (BEAR 750)- £ s e 0w 276000
+SYRINGE INFUSION PO s AN 13000 12140
+SINGLE CHANNEL MONITOR (NICU) s e B0w 2w
+ADVANCED VENTILATION (BEAR 750)- 1FO WS 1N 0000 276000
+SINGLE CHANNEL MONITOR (NICU) s e om0 2200
+SYRINGE INFUSION PUNP s AN 10w 12140
+COMVENTIONAL VENTILATOR WIS N 200000 1s00
+SINGLE CHANNEL MONITOR (NICU) s e om0
+SYRINGEINFUSION PUMP W2 AN 13000 121040
+SINGLE CHANNEL MONITOR (NICU) Wi e sw  mo
+COMVENTIONAL VENTILATOR W2 N 20000 1s0m
+SINGLE CHANNEL MONITOR (NICU) sas e awm 200
+SYRINGE INFUSION PUMP Was 3% mm o
+COMVENTIONAL VENTILATOR onas 1N 20000 sk
+SINGLE CHANNEL MONITOR (NICU) wnas e wm 200
+SYRINGE INFUSION PUMP wnas e dom e
+SYRINGE INFUSION PUNP wnas e dom e
+COMVENTIONAL VENTILATOR s e 2000 180w
+SINGLE CHANNEL MONITOR (NICU) vmas e w200
+SYRINGE INFUSION PUMP mas 1 @m0 o
+DN (PASTEURIZED DONOR HUMAN MILK) PROCESSING,
+PIM(EASTRURL J s e w600
+PDIN (PASTEURIZED DONORHUMAN MILK) PROCESSING.
+CHARGES 00 d mas e w2600
+COMVENTIONAL VENTILATOR Wias e 20000 18000
+PN onanes 1614
+
+LLM RESPONSE:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}
+
+PARSED DATA:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}

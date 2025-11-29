@@ -1,0 +1,48 @@
+================================================================================
+DEBUG INFO - Page 1
+================================================================================
+
+OCR TEXT:
+--------------------------------------------------------------------------------
+o P orieo
+Garps B ca amasors wsoon o oo
+ke Pue o T ) eesors wooon 6 oo
+~ ——— et — o0 0o wson
+Forn urcton T ) Bvazosss 1 o000 o0 00
+s st i s ) oo 1 o0 oo tso00n
+s Pt C39) anvmzsorer 1 w5000 00 5700
+. e o ) wnmoasorer ¢ ey oo o
+3 60 ATERAL BLOO A ANALYSS) 24112075 756 00 o eronce
+[I——— swroar:  tmoss
+I 5 ABDOUEN AN PELVI PORTGLEY 2012085 1109 om0 o0 o
+forscancmnses. Swront:  ostaod
+] [r— aunrans 7as om0 o oo
+lproccouee cuusas srour:  tsooco
+1 nes o necinon a1 w0000 0o tsonco
+o cumnoss R
+nsssTow suREoNGHARGES s iz ) pessen o ezsoo00n
+] nuesersTouscss a2 1 om0 000 0|
+o meATeR rRoss Suatant:
+A orcumnats sz ras 1 eroso000 000 s
+I oo TaNRSONGMRSES a0 1 e w00 o
+3 BooTNSRSONOWRES  2unmues 17as 00 o0 wasoel
+I nezcrioncommoL s ras w0000 om0 o]
+b WonsuATon amaesiras 1 o0 an oo
+b NSURNGE PROCESSING OMARGES 2unvames 725 1 oo o oo
+Joer cuances [
+
+LLM RESPONSE:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Final Bill",
+  "line_items": [],
+  "total_amount": 0.0
+}
+
+PARSED DATA:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Final Bill",
+  "line_items": [],
+  "total_amount": 0.0
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "document": "train_sample_1_page-0001",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_1_page-0002",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  }
+]

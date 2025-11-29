@@ -1,0 +1,46 @@
+================================================================================
+DEBUG INFO - Page 1
+================================================================================
+
+OCR TEXT:
+--------------------------------------------------------------------------------
+s * MEDICOS
+| ;
+I .. Rt
+[l o oo o or s cormunnons, 3w om o
+o o, -
+PR PEe e om0
+e jode kW o
+l [ somm, B3 AR Poam A g o
+floo e o SO g s
+fom oo o SRRLRL - R
+I L -
+1 wous  prOSatS 030 WLDSDIL 5 700 o We 8
+e o man  E e B
+1
+‘ﬂ. B S
+R e 7
+‘L oS R i R S 2=
+I, B o4 & B8 -
+e B H o8 = o s
+i el _ wEEH s
+i
+il
+i il
+\’}
+
+LLM RESPONSE:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Final Bill",
+  "line_items": [],
+  "total_amount": 0.0
+}
+
+PARSED DATA:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Final Bill",
+  "line_items": [],
+  "total_amount": 0.0
+}

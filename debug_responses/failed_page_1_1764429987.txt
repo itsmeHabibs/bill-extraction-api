@@ -1,0 +1,77 @@
+================================================================================
+DEBUG INFO - Page 1
+================================================================================
+
+OCR TEXT:
+--------------------------------------------------------------------------------
+D8Il ()
+o o, BilDs * 2etoras 1506
+Regto. Do, B
+PotertNome ¢ Age [ Gonter _
+Guardin e ¢ AdRDLATIe  : 19No025 2131
+paires ¢ R DwgeDs  :oenovaol 12
+Enpaneinen:  : o orDays :
+[Pl Roomto. :
+Hoidertame ¢ RoomCategery ¢
+[y Emppolcyte.
+i Sevee Descrpson
+[ SR R S UL e | o
+e r—
+Qv RGO ww 1 o
+CONSREOLALOISO 251460 PR ]
+VAT RGICAL DI o 3w
+DORBNOLREERDION. S R
+DoTERNGMGIN. aore PR}
+DoTEwasGSE TS FH—
+NOUMARONDS D099 )
+NEDIEOOIROWD w0 1 e
+NeEDiE L 245 80 S0 ioae
+SHETOSORE 100ISIH 250 R 1)
+SLXTION SETTANAR AGGY 5810 i e
+Smeecomomzamy i s
+STREOMONS02 oo R
+SmnEomoAWD  sowme 3w
+SGEDISOIND S i e
+SRIGE DO SO S205000 i ow
+e S S S 1]
+DoROPMERY S S
+TORESNGINTIASHED Gy PR
+NAUDNSITC A Jelol 2 e
+AUDRLIOMANAC 0 ]
+v (10 CONSIPMBIE QUGS 46774520 i amma P
+ho e v R
+DO BNOUREEREIOM. | 62UG782 )
+DoMETOOUVSOMGIo. w0 3 68
+BoSTACURE 56 e 2
+ST TN ROW G0 10y
+K Qs osus 5 a1
+Do S0 frioe] T
+NAUDNORCIOMAO. o S ioses
+SEIGE U AUV Gz S %e)
+DoemoDGI M. Getan 4 T
+100|170 COSUMMGLE OURGES 695350 i s e
+POTMMSRE G2 D 1 som
+RSNEBASER AT G 1 me
+RESPULES oM Soitess s i
+NAUID DEXTROSE S Si0ML_ o1at i lew
+ResALS BUOGCORTG asoet? s s
+siscninss |0 COMSBE GRS 46875 3| woun Lo
+e G e w T ms
+QonsrwmmEes0 w1 w6
+Frineed by EEETETe T
+
+LLM RESPONSE:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}
+
+PARSED DATA:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Bill Detail",
+  "line_items": [],
+  "total_amount": 0.0
+}

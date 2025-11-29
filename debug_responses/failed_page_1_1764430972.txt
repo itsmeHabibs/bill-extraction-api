@@ -1,0 +1,58 @@
+================================================================================
+DEBUG INFO - Page 1
+================================================================================
+
+OCR TEXT:
+--------------------------------------------------------------------------------
+[rr—
+[ o
+Pewsamn e sorzas
+fiomitesig Ot LIRS
+i DDt 21 1231
+o oy 7
+o e
+Pt ooty
+— JESE o e omconr  awoonr SN
+e ——— o me om w1
+s RGeS Ny W oime e oo
+AR MRS GRS N e s oo s
+o e owRGEs ey o oime om0 tame
+T G OARGES N W omm 0w am
+TN NG CIARGES - PRAATE WD W owm  ow om
+TN RN CUARGES - RAATE WARD W owm o aw  wmw
+s o uRGes . OATE Wi Wowem o o ww
+"o e
+wmonproceoue —————
+N sk womm ow aw e
+v s e wseknow Wowmm om  w  me
+NS et oS et Woemm om0 ssme
+G s e sexnon W owem 0w o e
+e — Wwomm om  ow  mw
+s Res e weRnon W owem o aw  me
+v — o ome o om
+WS Do Oxuey 4swtr Sy o amm oo om  asmw
+S Do Oy 4o Sy e o o e
+oz NoNSULSATON R
+prétrompi v amelus VeI 0w ow  om s
+T
+wusomarons
+i oo Ao A0 W ome oo
+NG COMPLSTE 000 COUNTIERK) W owm e e
+iz vEoussoon o e oo o ramw
+ronat 2 Prion semns sz
+
+LLM RESPONSE:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Final Bill",
+  "line_items": [],
+  "total_amount": 0.0
+}
+
+PARSED DATA:
+--------------------------------------------------------------------------------
+{
+  "page_type": "Final Bill",
+  "line_items": [],
+  "total_amount": 0.0
+}
