@@ -418,7 +418,7 @@ Claude API requires paid subscription, making Grok a better choice for hackathon
 ## 👨‍💻 Author
 
 **Ashutosh Swain**  
-**College**: [Your College Name]  
+**College**: BITS GOA  
 **GitHub**: https://github.com/itsmeHabibs
 
 ## 📄 License
