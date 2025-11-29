@@ -1,15 +1,12 @@
 """
-Aggressive LLM Processor - Forces the model to extract properly
-Uses multiple strategies to get valid JSON
+LLM Processor Module - Using Hugging Face API
+Handles Hugging Face-based extraction of structured data from OCR text
 """
 
 import json
 import logging
-import time
-import re
 from typing import Dict, Tuple, Any
 import requests
-import os
 from config import Config
 from prompts.extraction_prompts import ExtractionPrompts
 
@@ -17,31 +14,42 @@ logger = logging.getLogger(__name__)
 
 
 class LLMProcessor:
-    """Ultra-aggressive extraction that forces results"""
+    """
+    Handles LLM-based extraction using Hugging Face Inference API
+    """
     
     def __init__(self):
-        """Initialize with Groq"""
-        self.api_key = Config.GROQ_API_KEY
-        self.base_url = "https://api.groq.com/openai/v1"
-        self.model = "openai/gpt-oss-20b"
+        """Initialize LLM processor with Hugging Face configuration"""
+        self.api_key = Config.HF_API_KEY
+        # Using new HF router endpoint (api-inference is deprecated)
+        self.base_url = "https://router.huggingface.co/v1"
+        # Using Mistral model - faster and better than Llama 2
+        self.model = "mistralai/Mistral-7B-Instruct-v0.1"
         
+        # Token tracking
         self.total_input_tokens = 0
         self.total_output_tokens = 0
         self.total_tokens = 0
         
         if not self.api_key:
-            raise ValueError("❌ GROQ_API_KEY not set")
+            raise ValueError("❌ HF_API_KEY not set in environment variables")
         
-        logger.info(f"✅ LLM Processor initialized: {self.model}")
+        logger.info(f"✅ LLM Processor initialized with Hugging Face model: {self.model}")
     
     def reset_token_usage(self):
-        """Reset counters"""
+        """Reset token usage counters"""
         self.total_input_tokens = 0
         self.total_output_tokens = 0
         self.total_tokens = 0
+        logger.debug("🔄 Token usage counters reset")
     
     def get_token_usage(self) -> Dict[str, int]:
-        """Get token usage"""
+        """
+        Get cumulative token usage
+        
+        Returns:
+            Dictionary with token counts
+        """
         return {
             "total_tokens": self.total_tokens,
             "input_tokens": self.total_input_tokens,
@@ -54,81 +62,98 @@ class LLMProcessor:
         page_number: str = "1"
     ) -> Tuple[Dict[str, Any], int, int]:
         """
-        Extract with MAXIMUM aggression - try everything
+        Extract bill line items from OCR text using Hugging Face
+        
+        Args:
+            ocr_text: Text extracted from bill via OCR
+            page_number: Page number being processed
+            
+        Returns:
+            Tuple of (extracted_data_dict, input_tokens, output_tokens)
         """
-        logger.info(f"🤖 Aggressive extraction for page {page_number}")
+        logger.info(f"🤖 Starting LLM extraction for page {page_number}")
         
         try:
-            # Get prompts
+            # Get extraction prompt
             system_prompt = ExtractionPrompts.get_system_prompt()
             user_prompt = ExtractionPrompts.get_user_prompt(ocr_text)
             
-            # Try main extraction
-            response = self._call_groq_with_retry(system_prompt, user_prompt)
+            # Combine prompts
+            full_prompt = f"{system_prompt}\n\n{user_prompt}"
+            
+            logger.debug("📤 Sending request to Hugging Face API...")
+            
+            # Call Hugging Face API with retry logic
+            response = self._call_hf_with_retry(full_prompt)
             
             if response is None:
-                logger.error("❌ All attempts failed")
-                return self._empty_result()
+                logger.error("❌ Hugging Face API call failed after retries")
+                return {
+                    "line_items": [],
+                    "page_type": "Bill Detail",
+                    "total_amount": 0.0,
+                    "error": "API call failed"
+                }, 0, 0
             
-            result = response.json()
-            response_text = result['choices'][0]['message']['content']
-            input_tokens = result.get('usage', {}).get('prompt_tokens', 0)
-            output_tokens = result.get('usage', {}).get('completion_tokens', 0)
+            # Extract response text
+            response_text = response
             
-            # Update tokens
+            # Estimate tokens (rough estimate: 4 chars ≈ 1 token)
+            input_tokens = len(full_prompt) // 4
+            output_tokens = len(response_text) // 4
+            
+            # Update cumulative counters
             self.total_input_tokens += input_tokens
             self.total_output_tokens += output_tokens
             self.total_tokens += (input_tokens + output_tokens)
             
-            logger.info(f"✅ Got response. Tokens: {input_tokens + output_tokens}")
-            logger.debug(f"Response: {response_text[:300]}")
+            logger.info(f"✅ Hugging Face API call successful. Est. Tokens: {input_tokens + output_tokens}")
+            logger.debug(f"Response text length: {len(response_text)} chars")
             
-            # Try to parse
-            extracted_data = self._aggressive_parse(response_text)
+            # Parse JSON response
+            extracted_data = self._parse_json_response(response_text)
             
-            if extracted_data and extracted_data.get('line_items'):
-                item_count = len(extracted_data['line_items'])
-                logger.info(f"✅ Extracted {item_count} items")
-                return extracted_data, input_tokens, output_tokens
+            if not extracted_data:
+                logger.warning("⚠️  Failed to parse JSON, returning empty structure")
+                extracted_data = {
+                    "line_items": [],
+                    "page_type": "Bill Detail",
+                    "total_amount": 0.0
+                }
             
-            # Failed - try retry
-            logger.warning("⚠️  No items, trying retry...")
-            retry_prompt = ExtractionPrompts.get_retry_prompt(ocr_text, response_text[:500])
-            retry_response = self._call_groq_with_retry(system_prompt, retry_prompt, retries=1)
+            item_count = len(extracted_data.get('line_items', []))
+            logger.info(f"✅ Extracted {item_count} items from page {page_number}")
             
-            if retry_response:
-                retry_result = retry_response.json()
-                retry_text = retry_result['choices'][0]['message']['content']
-                input_tokens += retry_result.get('usage', {}).get('prompt_tokens', 0)
-                output_tokens += retry_result.get('usage', {}).get('completion_tokens', 0)
-                
-                extracted_data = self._aggressive_parse(retry_text)
-                
-                if extracted_data and extracted_data.get('line_items'):
-                    item_count = len(extracted_data['line_items'])
-                    logger.info(f"✅ Retry succeeded! {item_count} items")
-                    return extracted_data, input_tokens, output_tokens
-            
-            # Still failed - return empty but valid
-            logger.warning("⚠️  Returning empty result")
-            return self._empty_result()[0], input_tokens, output_tokens
+            return extracted_data, input_tokens, output_tokens
             
         except Exception as e:
-            logger.error(f"❌ Error: {e}")
-            return self._empty_result()
+            logger.error(f"❌ LLM extraction error: {e}")
+            import traceback
+            logger.debug(traceback.format_exc())
+            
+            # Return empty structure on error
+            return {
+                "line_items": [],
+                "page_type": "Bill Detail",
+                "total_amount": 0.0,
+                "error": str(e)
+            }, 0, 0
     
-    def _empty_result(self) -> Tuple[Dict[str, Any], int, int]:
-        """Return valid empty result"""
-        return {
-            "line_items": [],
-            "page_type": "Bill Detail",
-            "total_amount": 0.0
-        }, 0, 0
-    
-    def _call_groq_with_retry(self, system_prompt: str, user_prompt: str, retries: int = 2):
-        """Call with aggressive retry"""
+    def _call_hf_with_retry(self, prompt: str, retries: int = 3):
+        """
+        Call Hugging Face API with retry logic
+        
+        Args:
+            prompt: Full prompt to send
+            retries: Number of retries
+            
+        Returns:
+            Response text or None
+        """
         for attempt in range(retries + 1):
             try:
+                logger.debug(f"🔄 Hugging Face API call (attempt {attempt + 1}/{retries + 1})")
+                
                 response = requests.post(
                     f"{self.base_url}/chat/completions",
                     headers={
@@ -138,126 +163,178 @@ class LLMProcessor:
                     json={
                         "model": self.model,
                         "messages": [
-                            {"role": "system", "content": system_prompt},
-                            {"role": "user", "content": user_prompt}
+                            {"role": "user", "content": prompt}
                         ],
                         "max_tokens": 2000,
-                        "temperature": 0.0,  # Zero temperature for consistency
-                        "response_format": {"type": "json_object"}  # Force JSON
+                        "temperature": 0.1,
                     },
-                    timeout=60
+                    timeout=120
                 )
                 
                 response.raise_for_status()
-                logger.debug(f"✅ Success on attempt {attempt + 1}")
-                return response
                 
+                # Parse response
+                result = response.json()
+                
+                # Handle OpenAI-compatible format from router
+                if isinstance(result, dict):
+                    if 'choices' in result and len(result['choices']) > 0:
+                        # OpenAI format
+                        response_text = result['choices'][0]['message']['content']
+                    elif 'error' in result:
+                        logger.error(f"❌ HF API error: {result['error']}")
+                        if attempt < retries:
+                            logger.info(f"🔄 Retrying...")
+                            import time
+                            time.sleep(3 * (attempt + 1))
+                            continue
+                        return None
+                    else:
+                        response_text = str(result)
+                else:
+                    response_text = str(result)
+                
+                logger.debug(f"✅ Hugging Face API request successful")
+                return response_text
+                
+            except requests.exceptions.Timeout:
+                logger.error(f"❌ Request timeout (attempt {attempt + 1})")
+                if attempt < retries:
+                    logger.info(f"🔄 Retrying...")
+                    import time
+                    time.sleep(3 * (attempt + 1))
+                else:
+                    return None
+                    
             except requests.exceptions.HTTPError as e:
                 error_msg = str(e.response.text) if hasattr(e, 'response') else str(e)
+                logger.error(f"❌ HTTP error (attempt {attempt + 1}): {error_msg}")
                 
-                # Rate limit
-                if "rate_limit" in error_msg.lower():
-                    if attempt < retries:
-                        wait = 5 + (attempt * 2)
-                        logger.warning(f"⏳ Rate limit - waiting {wait}s...")
-                        time.sleep(wait)
-                        continue
-                
-                logger.error(f"❌ HTTP error: {error_msg[:200]}")
                 if attempt < retries:
-                    time.sleep(2)
+                    logger.info(f"🔄 Retrying...")
+                    import time
+                    time.sleep(3 * (attempt + 1))
+                else:
+                    return None
                     
             except Exception as e:
-                logger.error(f"❌ Error: {e}")
+                logger.error(f"❌ Error (attempt {attempt + 1}): {e}")
                 if attempt < retries:
-                    time.sleep(2)
-        
-        return None
+                    logger.info(f"🔄 Retrying...")
+                    import time
+                    time.sleep(3 * (attempt + 1))
+                else:
+                    return None
     
-    def _aggressive_parse(self, response_text: str) -> Dict[str, Any]:
+    def _parse_json_response(self, response_text: str) -> Dict[str, Any]:
         """
-        ULTRA-AGGRESSIVE parsing - extract JSON no matter what
+        Parse JSON from Hugging Face response, handling markdown formatting
+        
+        Args:
+            response_text: Raw response from Hugging Face
+            
+        Returns:
+            Parsed JSON dictionary
         """
         try:
-            # Clean the response
-            clean = response_text.strip()
+            # Remove the original prompt if it's included in response
+            if response_text.count('{') > 1:
+                # Find the last occurrence of JSON
+                last_brace = response_text.rfind('{')
+                response_text = response_text[last_brace:]
             
-            if not clean:
-                return {}
+            # Remove markdown code blocks if present
+            clean_response = response_text.strip()
             
-            # Remove markdown
-            clean = re.sub(r'```json\s*', '', clean)
-            clean = re.sub(r'```\s*', '', clean)
-            clean = clean.strip()
+            # Handle various markdown formats
+            if clean_response.startswith("```json"):
+                clean_response = clean_response[7:]
+            elif clean_response.startswith("```"):
+                clean_response = clean_response[3:]
             
-            # Find JSON object
-            json_match = re.search(r'\{.*\}', clean, re.DOTALL)
-            if json_match:
-                clean = json_match.group(0)
-            else:
-                logger.error("No JSON found in response")
-                return {}
+            if clean_response.endswith("```"):
+                clean_response = clean_response[:-3]
             
-            # Parse
-            parsed = json.loads(clean)
+            clean_response = clean_response.strip()
             
-            # Validate structure
-            if not isinstance(parsed, dict):
-                return {}
+            logger.debug(f"🔍 Parsing JSON response...")
+            parsed = json.loads(clean_response)
             
-            if 'line_items' not in parsed:
-                parsed['line_items'] = []
-            
-            if 'page_type' not in parsed:
-                parsed['page_type'] = "Bill Detail"
-            
-            if 'total_amount' not in parsed:
-                parsed['total_amount'] = 0.0
-            
-            logger.debug(f"✅ Parsed {len(parsed.get('line_items', []))} items")
+            logger.debug(f"✅ JSON parsed successfully")
             return parsed
             
         except json.JSONDecodeError as e:
-            logger.error(f"❌ JSON error: {e}")
-            logger.error(f"Text: {response_text[:500]}")
+            logger.error(f"❌ JSON parse error: {e}")
+            logger.debug(f"Response text: {response_text[:500]}")
             return {}
         except Exception as e:
-            logger.error(f"❌ Parse error: {e}")
+            logger.error(f"❌ Unexpected parsing error: {e}")
             return {}
     
     def identify_page_type(self, ocr_text: str) -> str:
-        """Identify page type"""
+        """
+        Identify the type of bill page
+        
+        Args:
+            ocr_text: Text extracted from page
+            
+        Returns:
+            Page type: "Bill Detail", "Final Bill", or "Pharmacy"
+        """
         text_lower = ocr_text.lower()
         
-        if any(word in text_lower for word in ["pharmacy", "medicine", "drug"]):
+        # Simple keyword-based classification
+        if any(word in text_lower for word in ["pharmacy", "medicine", "drug", "tablet", "capsule", "syrup"]):
             return "Pharmacy"
-        elif "final" in text_lower:
+        elif "final" in text_lower and "bill" in text_lower:
             return "Final Bill"
         else:
             return "Bill Detail"
     
     def validate_extraction(self, extracted_data: Dict[str, Any]) -> bool:
-        """Validate"""
+        """
+        Validate extracted data structure
+        
+        Args:
+            extracted_data: Dictionary with extracted line items
+            
+        Returns:
+            True if valid, False otherwise
+        """
+        logger.debug("✔️  Validating extraction structure...")
+        
         try:
+            # Check required keys
             if "line_items" not in extracted_data:
+                logger.warning("⚠️  Missing 'line_items' key")
                 return False
             
             line_items = extracted_data.get("line_items", [])
+            
             if not isinstance(line_items, list):
+                logger.warning("⚠️  'line_items' is not a list")
                 return False
             
-            for item in line_items:
-                required = ["item_name", "item_amount", "item_rate", "item_quantity"]
-                if not all(key in item for key in required):
+            # Validate each line item
+            for idx, item in enumerate(line_items):
+                required_keys = ["item_name", "item_amount", "item_rate", "item_quantity"]
+                
+                if not all(key in item for key in required_keys):
+                    logger.warning(f"⚠️  Item {idx} missing required keys: {list(item.keys())}")
                     return False
                 
+                # Validate data types
                 try:
                     float(item["item_amount"])
                     float(item["item_rate"])
                     float(item["item_quantity"])
-                except:
+                except (ValueError, TypeError):
+                    logger.warning(f"⚠️  Item {idx} has invalid numeric values")
                     return False
             
+            logger.debug(f"✅ Validation passed for {len(line_items)} items")
             return True
-        except:
+            
+        except Exception as e:
+            logger.error(f"❌ Validation error: {e}")
             return False

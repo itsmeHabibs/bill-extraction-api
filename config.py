@@ -16,8 +16,8 @@ class Config:
     Loads all settings from environment variables
     """
     
-    # ========== Groq API Configuration ==========
-    GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+    # ========== Hugging Face API Configuration ==========
+    HF_API_KEY = os.getenv("HF_API_KEY")
     
     # ========== Flask Configuration ==========
     FLASK_ENV = os.getenv("FLASK_ENV", "development")
@@ -33,7 +33,7 @@ class Config:
     ENVIRONMENT = os.getenv("ENVIRONMENT", "development")
     
     # ========== Request Settings ==========
-    REQUEST_TIMEOUT = 60  # seconds
+    REQUEST_TIMEOUT = 120  # seconds (HF might be slower)
     MAX_FILE_SIZE = 50 * 1024 * 1024  # 50MB
     
     # ========== Validation Settings ==========
@@ -54,17 +54,17 @@ class Config:
         Raises:
             ValueError: If required config is missing
         """
-        if not Config.GROQ_API_KEY:
+        if not Config.HF_API_KEY:
             raise ValueError(
-                "❌ GROQ_API_KEY environment variable not set. "
+                "❌ HF_API_KEY environment variable not set. "
                 "Please add it to .env file or set it as environment variable. "
-                "Get free API key from: https://console.groq.com/keys"
+                "Get API key from: https://huggingface.co/settings/tokens"
             )
         
-        if not Config.GROQ_API_KEY.startswith("gsk_"):
+        if not Config.HF_API_KEY.startswith("hf_"):
             raise ValueError(
-                "⚠️  GROQ_API_KEY format seems invalid. "
-                "It should start with 'gsk_'. Get your key from https://console.groq.com/keys"
+                "⚠️  HF_API_KEY format seems invalid. "
+                "It should start with 'hf_'. Get your key from https://huggingface.co/settings/tokens"
             )
         
         return True
@@ -84,7 +84,8 @@ class Config:
             "flask_env": Config.FLASK_ENV,
             "ocr_service": Config.OCR_SERVICE,
             "log_level": Config.LOG_LEVEL,
-            "api_key_set": bool(Config.GROQ_API_KEY),
+            "llm_provider": "Hugging Face",
+            "api_key_set": bool(Config.HF_API_KEY),
         }
 
 
@@ -102,14 +103,14 @@ class ProductionConfig(Config):
     """Production environment configuration"""
     DEBUG = False
     TESTING = False
-    REQUEST_TIMEOUT = 90
+    REQUEST_TIMEOUT = 120
 
 
 class TestingConfig(Config):
     """Testing environment configuration"""
     DEBUG = True
     TESTING = True
-    REQUEST_TIMEOUT = 30
+    REQUEST_TIMEOUT = 60
 
 
 # ============================================================================
