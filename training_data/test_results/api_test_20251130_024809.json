@@ -1,0 +1,330 @@
+[
+  {
+    "document": "train_sample_1_page-0001",
+    "status": "success",
+    "items": 6,
+    "tokens": 1083,
+    "time": 2.215245008468628
+  },
+  {
+    "document": "train_sample_1_page-0002",
+    "status": "success",
+    "items": 12,
+    "tokens": 2055,
+    "time": 3.2760748863220215
+  },
+  {
+    "document": "train_sample_2_page-0001",
+    "status": "success",
+    "items": 2,
+    "tokens": 824,
+    "time": 1.9928197860717773
+  },
+  {
+    "document": "train_sample_2_page-0002",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_2_page-0003",
+    "status": "success",
+    "items": 13,
+    "tokens": 1378,
+    "time": 8.810669898986816
+  },
+  {
+    "document": "train_sample_3_page-0001",
+    "status": "success",
+    "items": 2,
+    "tokens": 812,
+    "time": 8.047356128692627
+  },
+  {
+    "document": "train_sample_4_page-0001",
+    "status": "success",
+    "items": 1,
+    "tokens": 1037,
+    "time": 4.064581871032715
+  },
+  {
+    "document": "train_sample_4_page-0002",
+    "status": "success",
+    "items": 14,
+    "tokens": 1650,
+    "time": 8.70889401435852
+  },
+  {
+    "document": "train_sample_5_page-0001",
+    "status": "success",
+    "items": 3,
+    "tokens": 1014,
+    "time": 8.675629138946533
+  },
+  {
+    "document": "train_sample_5_page-0002",
+    "status": "success",
+    "items": 1,
+    "tokens": 738,
+    "time": 7.726554870605469
+  },
+  {
+    "document": "train_sample_5_page-0003",
+    "status": "success",
+    "items": 13,
+    "tokens": 1533,
+    "time": 4.850931167602539
+  },
+  {
+    "document": "train_sample_6_page-0001",
+    "status": "success",
+    "items": 3,
+    "tokens": 972,
+    "time": 8.395524024963379
+  },
+  {
+    "document": "train_sample_6_page-0002",
+    "status": "success",
+    "items": 2,
+    "tokens": 850,
+    "time": 8.473651885986328
+  },
+  {
+    "document": "train_sample_6_page-0003",
+    "status": "success",
+    "items": 1,
+    "tokens": 795,
+    "time": 3.518825054168701
+  },
+  {
+    "document": "train_sample_7_page-0001",
+    "status": "success",
+    "items": 3,
+    "tokens": 911,
+    "time": 8.423105001449585
+  },
+  {
+    "document": "train_sample_8_page-0001",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_9_page-0001",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_9_page-0002",
+    "status": "success",
+    "items": 2,
+    "tokens": 1268,
+    "time": 3.943963050842285
+  },
+  {
+    "document": "train_sample_9_page-0003",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_10_page-0001",
+    "status": "success",
+    "items": 3,
+    "tokens": 764,
+    "time": 4.521881103515625
+  },
+  {
+    "document": "train_sample_10_page-0002",
+    "status": "success",
+    "items": 3,
+    "tokens": 1405,
+    "time": 2.5871379375457764
+  },
+  {
+    "document": "train_sample_10_page-0003",
+    "status": "success",
+    "items": 3,
+    "tokens": 851,
+    "time": 7.668901681900024
+  },
+  {
+    "document": "train_sample_11_page-0001",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_12_page-0001",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_12_page-0002",
+    "status": "success",
+    "items": 19,
+    "tokens": 3454,
+    "time": 19.539936065673828
+  },
+  {
+    "document": "train_sample_12_page-0003",
+    "status": "success",
+    "items": 19,
+    "tokens": 2677,
+    "time": 18.37106490135193
+  },
+  {
+    "document": "train_sample_12_page-0004",
+    "status": "success",
+    "items": 10,
+    "tokens": 2147,
+    "time": 9.623488903045654
+  },
+  {
+    "document": "train_sample_12_page-0005",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_12_page-0006",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_13_page-0001",
+    "status": "success",
+    "items": 20,
+    "tokens": 1996,
+    "time": 9.982553243637085
+  },
+  {
+    "document": "train_sample_13_page-0002",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_13_page-0003",
+    "status": "success",
+    "items": 32,
+    "tokens": 2799,
+    "time": 11.549174070358276
+  },
+  {
+    "document": "train_sample_13_page-0004",
+    "status": "success",
+    "items": 1,
+    "tokens": 1002,
+    "time": 9.372474908828735
+  },
+  {
+    "document": "train_sample_13_page-0005",
+    "status": "success",
+    "items": 10,
+    "tokens": 1868,
+    "time": 5.934480905532837
+  },
+  {
+    "document": "train_sample_14_page-0001",
+    "status": "success",
+    "items": 7,
+    "tokens": 1365,
+    "time": 9.870529174804688
+  },
+  {
+    "document": "train_sample_14_page-0002",
+    "status": "success",
+    "items": 8,
+    "tokens": 1915,
+    "time": 9.7518789768219
+  },
+  {
+    "document": "train_sample_14_page-0003",
+    "status": "success",
+    "items": 4,
+    "tokens": 847,
+    "time": 9.12274694442749
+  },
+  {
+    "document": "train_sample_14_page-0004",
+    "status": "success",
+    "items": 2,
+    "tokens": 720,
+    "time": 1.6760571002960205
+  },
+  {
+    "document": "train_sample_14_page-0005",
+    "status": "success",
+    "items": 1,
+    "tokens": 630,
+    "time": 7.441327810287476
+  },
+  {
+    "document": "train_sample_14_page-0006",
+    "status": "success",
+    "items": 19,
+    "tokens": 1608,
+    "time": 2.49289870262146
+  },
+  {
+    "document": "train_sample_15_page-0001",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_15_page-0002",
+    "status": "success",
+    "items": 6,
+    "tokens": 1254,
+    "time": 9.695920944213867
+  },
+  {
+    "document": "train_sample_15_page-0003",
+    "status": "success",
+    "items": 6,
+    "tokens": 1402,
+    "time": 9.346183776855469
+  },
+  {
+    "document": "train_sample_15_page-0004",
+    "status": "success",
+    "items": 2,
+    "tokens": 1438,
+    "time": 9.871433019638062
+  },
+  {
+    "document": "train_sample_15_page-0005",
+    "status": "failed",
+    "error": "No bill line items found in the document. Please verify the document contains line items."
+  },
+  {
+    "document": "train_sample_15_page-0006",
+    "status": "success",
+    "items": 2,
+    "tokens": 2871,
+    "time": 10.851824045181274
+  },
+  {
+    "document": "train_sample_15_page-0007",
+    "status": "success",
+    "items": 33,
+    "tokens": 2698,
+    "time": 10.695097923278809
+  },
+  {
+    "document": "train_sample_15_page-0008",
+    "status": "success",
+    "items": 20,
+    "tokens": 1961,
+    "time": 9.873496055603027
+  },
+  {
+    "document": "train_sample_15_page-0009",
+    "status": "success",
+    "items": 20,
+    "tokens": 2025,
+    "time": 9.750651121139526
+  },
+  {
+    "document": "train_sample_15_page-0010",
+    "status": "success",
+    "items": 12,
+    "tokens": 1664,
+    "time": 9.375657081604004
+  }
+]
